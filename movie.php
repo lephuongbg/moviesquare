@@ -2,43 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <?php
-	$db = new mysqli('localhost', 'root', 'herozero', 'moviesquare');
-	// check connection
-	if (mysqli_connect_errno()) {
-		die('Counld not connect: '. mysqli_connect_error());
-	}
-
-	$movie_id = isset($_GET['id']) ? $_GET['id'] : 0;
-	
-	if ($result = $db->query('call selectMovieById(' . $movie_id . ');')) {
-		if ($row = $result->fetch_assoc()) {
-			$movie = $row;
-		} else {
-			// 404 Redirect
-			header('Location: index.php');
-		}
-
-		$result->close();
-	} else {
-		die($db->error);
-	}
-
-	while ($db->more_results()) {
-		$db->next_result();
-	}
-	
-	if ($result = $db->query('call selectMoviesNowShowing();')) {
-		$movies_now_showing = array();
-		while($row = $result->fetch_assoc()) {
-			$movies_now_showing[] = $row;
-		}
-		
-		$result->close();
-	} else {
-		die($db->error);
-	}
-
-	$db->close();
+include_once 'core/database.php';
+$db = new MS_Database();
+$movie_id = isset($_GET['id']) ? $_GET['id'] : 0;
+$movies_now_showing = $db->callProcedure('selectMoviesNowShowing');
+$movie = $db->callProcedure('selectMovieById', (int) $movie_id);
+if (empty($movie))
+	// 404 Redirect
+	header('Location: index.php');
 ?>
 
 <head>

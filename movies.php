@@ -2,26 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <?php
-	$db = new mysqli('localhost', 'root', 'herozero', 'moviesquare');
-	// check connection
-	if (mysqli_connect_errno()) {
-		die('Counld not connect: '. mysqli_connect_error());
-	}
-
-	if ($result = $db->query('call selectMovies();')) {
-		$movies = array();
-		while($row = $result->fetch_assoc()) {
-			$movies[] = $row;
-		}
-
-		$result->close();
-	} else {
-		die($db->error);
-	}
-	
-	$db->close();
-
-	$movie_filter = isset($_GET['filter']) ? $_GET['filter'] : '';
+include_once 'core/database.php';
+$db = new MS_Database();
+$movies = $db->callProcedure('selectMovies');
+$movie_filter = isset($_GET['filter']) ? $_GET['filter'] : '';
 ?>
 
 <head>

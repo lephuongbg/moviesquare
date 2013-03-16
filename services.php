@@ -2,24 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <?php
-	$db = new mysqli('localhost', 'root', 'herozero', 'moviesquare');
-	// check connection
-	if (mysqli_connect_errno()) {
-		die('Counld not connect: '. mysqli_connect_error());
-	}
-
-	if ($result = $db->query('call selectMoviesNowShowing();')) {
-		$movies_now_showing = array();
-		while($row = $result->fetch_assoc()) {
-			$movies_now_showing[] = $row;
-		}
-
-		$result->close();
-	} else {
-		die($db->error);
-	}
-	
-	$db->close();
+include_once 'core/database.php';
+$db = new MS_Database();
+$movies_now_showing = $db->callProcedure('selectMoviesNowShowing');
 ?>
 
 <head>
