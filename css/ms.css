@@ -1,0 +1,169 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {font-family:'MyriadProRegular', Arial, san-serif; font-size:13px; line-height:20px; repeat-x; height:100%; color:#333;}
+html {height:100%; background:url(../images/htmlBg.gif);}
+
+.w {margin:auto; width:960px;}
+a {color:#600; }
+a:hover {color:#c00; }
+.hoverBox, a, a:hover, button, button:hover {transition: all 0.4s; -moz-transition: all 0.4s; -webkit-transition: all 0.4s; -o-transition: all 0.4s;}
+
+/* HEADER */
+
+#header {height:50px; padding:10px 0px 5px 0px;}
+#header h1 {font-family:"MyriadProBoldCondensed"; font-size:45px; height:50px; float:left; width:240px; line-height:50px;}
+#header h1 a {color:#fff; text-transform:uppercase;}
+
+#nav {width:720px; float:left; text-align:right; font-size:18px;}
+#nav li {display:inline-block;}
+#nav li a {display:inline-block; font-family:"MyriadProBoldCondensed"; color:#999; line-height:10px; text-transform:uppercase; padding:30px 10px 10px 10px;}
+#nav li a:hover, #nav .current a {color:#fff;}
+
+#filmBar {height:40px; background:url(../images/filmBarBg.gif) repeat-x; margin-bottom:1px; }
+#filmBarDark {height:40px; background:url(../images/filmBarDarkBg.gif) repeat-x; margin-bottom:1px; }
+#filmBarGrey {height:40px; background:url(../images/filmBarGreyBg.gif) repeat-x; margin-bottom:1px; }
+
+/* COMMON */
+
+h1, h2, h3, p {margin-bottom:15px;}
+h1, h2, h3 {font-family:"MyriadProBoldCondensed";text-transform:uppercase;}
+h1 {font-size:28px; line-height:32px;}
+h2 {font-size:24px; line-height:30px;}
+h3 {font-size:18px; line-height:24px;}
+.button {display:inline-block;background:url(../images/buttonBg.jpg) center center repeat-x #600; border:1px solid #600; line-height:10px; padding:10px 15px;text-transform:uppercase; text-shadow:0px 0px 5px rgba(0,0,0,0.6); font-family:"MyriadProBoldCondensed"; color:#fff; font-size:18px; border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; cursor:pointer;}
+
+.button:hover {color:#fff; background-image:none; background-color:#900; top:1px; position:relative; text-shadow:0px 0px 5px rgba(0,0,0,1)}
+
+input[type="checkbox"] {width: auto; margin: 4px 0 0; margin-top: 1px \9; *margin-top: 0; line-height: normal;}
+input[type="checkbox"]:focus {outline: thin dotted #333; outline: 5px auto -webkit-focus-ring-color; outline-offset: -2px;}
+label{display: block; margin-bottom: 5px;display: inline-block; padding: 2px 4px; font-size: 14px; line-height: 18px; white-space: nowrap; vertical-align: baseline;}
+
+/* MAINBODY */
+
+#main {background:#fff; margin-bottom:1px;}
+.padding {padding:10px;}
+.mod {margin-bottom:10px;}
+.box {border-radius:5px; border:1px solid #999; padding:9px; position:relative;}
+#sidebar {width:240px; float:right;}
+#content {width: 720px; float:right;}
+#slider img {margin-bottom:10px;}
+
+/* MODULES */
+
+#quickBooking p {margin:0px;}
+#quickBooking button {margin-bottom:10px;}
+.ticketIcon {width:100px; height:100px; background:url(../images/ticketIcon.png) no-repeat; position:absolute; top:-35px; right:5px;}
+
+#movieBox {margin-top:20px; background:#333; margin-bottom:1px;}
+.movieTabs {height:40px; background:#000;}
+.movieTabs a {display:block; float:left; font-family:"MyriadProBoldCondensed"; font-size:18px; line-height:10px; padding:15px 10px; text-transform:uppercase; color:#999}
+.movieTabs a.selected, .movieTabs a:hover {background:#333; color:#fff; text-shadow:0px 0px 5px rgba(0,0,0,0.8)}
+
+.movieGrid {padding:10px;}
+.movieGrid .movieCell {position:relative; width:180px; height:300px; float:left; margin-right:10px;margin-bottom:20px;}
+.movieGrid .last {margin-right:0px;}
+
+.movieCell:hover .hoverBox {opacity:1;cursor:pointer; visibility:visible}
+.movieCell .hoverBox {background:url(../images/overlay.png); padding-top:150px; position:absolute; top:5px; left:5px; text-align:center; width:170px; height:100px; opacity:0; visibility:hidden;}
+.hoverBox .button {display:block; width:90px; margin:auto; margin-bottom:5px; }
+.movieCell img {width:170px; height:250px; border:1px solid #666; padding:4px; margin-bottom:10px;}
+.movieCell .rateBar {width:160px; margin:auto; height:2px; background:#666;}
+.movieCell .rateLevel {height:2px; background:#900;}
+.movieCell .movieName {text-align:center; padding:15px 10px;}
+.movieCell .movieName a {font-family:"MyriadProBoldCondensed"; font-size:18px; line-height:10px; text-transform:uppercase; color:#fff; text-shadow:0px 0px 5px #000}
+
+#newsBox {margin-top:20px; background:#ccc; margin-bottom:1px;}
+#newsBox h3.boxTitle {padding:10px; background:#999;}
+#newsBox .itemCell {width: 220px; float:left; padding:10px;}
+#newsBox .itemCell img {width:220px; height:160px; margin-bottom:10px;}
+
+/* FOOTER */
+
+#footer {color:#ccc; padding-top:20px; margin-bottom:20px; position:relative;}
+#footer li a {color:#ccc;}
+#footer li a:hover, #footer .current a {color:#fff;}
+#footer ul {float:right; font-family:"MyriadProBoldCondensed";text-transform:uppercase; font-size:13px;}
+#footer ul li {display:inline-block; padding-left:10px;}
+#footer p {width:450px;}
+#footer .socialIcons {position:absolute; right:0px; bottom:0px;}
+.socialIcons a {display:inline-block; margin-left:5px; opacity:0.6 ;-moz-opacity:0.6}
+.socialIcons a:hover { opacity:1 ;-moz-opacity:1}
+
+/* CATEGORY */
+
+#content h1 {border-bottom:1px solid #ccc;}
+.itemBox {margin-bottom:20px; border-bottom:1px solid #ccc; padding-bottom:20px;}
+.itemBox img {float:right; width:220px; height: 160px; padding:4px; border:1px solid #ccc; margin-left:20px;}
+.small {font-size:11px; color:#999; text-transform:uppercase;}
+
+.pagination {text-align:center;}
+.pagination li {display:inline-block; font-size:14px; }
+.pagination li a {display:inline-block; padding:3px 10px; margin:0px 2px; border:1px solid #ddd; border-radius:3px;}
+.pagination li a:hover, .pagination li.current a {border:1px solid #300; background:#600; color:#fff; border-radius:3px;}
+
+/* ARTICLE */
+.itemInfo, .itemTags, .itemLatest, .itemComment {margin-bottom:20px;}
+.itemInfo a, .itemInfo span {display:inline-block; margin-right:20px;}
+.itemSapo {font-weight:bold; font-size:15px; line-height:22px;}
+.itemImage img {border:1px solid #ccc; padding:9px; margin-bottom:20px; width:680px;}
+.itemText ul li {list-style:inside square;}
+.itemText ul {padding:10px; margin-bottom:10px;}
+
+.itemTags a {display:inline-block; padding:2px 5px; font-size:11px; text-transform:uppercase; color:#fff; border-radius:3px; background:#ccc; margin-right:5px;}
+.itemLatest {padding:0px 10px;}
+.itemLatest li {list-style:square;}
+
+/* MOVIE */
+.moviePoster {margin-bottom:20px;}
+.moviePoster img {border:1px solid #ccc; padding:9px; margin-bottom:20px; width:500px; height:750px; display:block; margin-left:auto; margin-right:auto;}
+.movieTrailer {padding:30px 0px;}
+
+/* YOUR TICKET */
+
+.yourTicket {}
+.yourTicket img {width:190px; height:auto; border:1px solid #ccc; padding:4px; margin-bottom:10px;}
+.yourTicket li {margin-bottom:5px;}
+.yourTicket span.label {display:inline-block; width:70px; font-size:11px; font-weight:normal; color:#999;}
+.yourSeats {font-family:"MyriadProBoldCondensed"; text-transform:uppercase; font-size:20px; color:#900; border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;}
+.ticketTotal { font-weight:bold; color:#900; border-top:1px solid #ccc; padding-top:10px; margin-top:5px;}
+.ticketTotal , .ticketStandard, .ticketVIP, .ticketVAT {font-size:15px;}
+
+.progressBar {margin-bottom:1px; font-family:"MyriadProBoldCondensed"; text-transform:uppercase; font-size:20px; color:#fff; background:#cc9999; text-align:right; padding:10px; position:relative;  height:25px; line-height:25px;}
+.currentStep {position:absolute; top:0; left:0; background:#900; text-align:left; padding:10px 0px;} 
+.currentStep span {display:block; padding-left:10px;}
+.progressStatus {position:absolute; top:0; right:0px; padding:10px; text-align:right;}
+
+/* BOOKING STEP 1 */
+#dateBox {background:#333;}
+.dateTabs {height:40px;}
+.dateTabs a {display:block; float:left; font-family:"MyriadProBoldCondensed"; font-size:18px; line-height:10px; padding:15px 10px; text-transform:uppercase; color:#999}
+.dateTabs a.selected, .dateTabs a:hover {background:#fff; color:#000; text-shadow:0px 0px 2px rgba(0,0,0,0.3)}
+
+/* BOOKING STEP 2 */
+#seatMap {margin:auto; border-collapse:separate; border-spacing:3px 7px;}
+#seatMap td {width:30px; height:30px; border-radius:5px; background-color:#ccc; cursor:pointer;}
+#seatMap .invalid {width:15px; visibility:hidden;}
+#seatMap .vip {background-color:#f99;}
+#seatMap .selected {background-color:#009;}
+#seatMap .booked {background-color:#333;}
+#seatMap .vip.selected {background-color:#900;}
+#seatMap .nameTag {background-color:#fff; text-align:center; font-size:18px; cursor:default;}
+
+.yourSeats span {margin-right:5px; cursor:pointer; display:inline-block;}
+
+/* BOOKING STEP 3 */
+.formTable {width:100%; border-bottom:1px solid #ccc; margin-bottom:20px;}
+.formTable td {padding-bottom:10px; color:#666;}
+.formLabel {width:160px;}
+.formError {color:#f00; font-size:11px;}
+.paymentSelector label {display:block;}
+.formBody .inputbox {padding:5px; border:1px solid #ccc; border-radius:3px; color:#333; width:200px;}
+.inputbox:focus {border-color:#999;}
+.formBody .wide {width:300px; !important}
+.formBody .short {width:100px; !important}
+
+/* STEP */
+.ticketInfo, .userInfo {background:#fff; border:2px solid #ccc;  margin-bottom:10px;}
+.ticketInfo td, .userInfo td {padding:10px; }
+.ticketCode {font-size:35px; font-weight:bold; color:#900;}
