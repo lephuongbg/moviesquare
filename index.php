@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <?php
-include_once 'core/database.php';
-$db = new MS_Database();
-$movies = $db->callProcedure('selectMovies');
+	include_once 'core/database.php';
+	$db = new MS_Database();
+	$movies = $db->callProcedure('selectMovies');
 ?>
 
 <head>
@@ -64,40 +64,8 @@ $movies = $db->callProcedure('selectMovies');
 			</div>
 		</div>
 
-		<div id="sidebar">
-			<div class="padding">
-			<div id="quickBooking" class="box mod">
-			<div class="ticketIcon"></div>
-			<h3>Get Ticket</h3>
-
-			<select name="movie" class="default" tabindex="1">
-				<option value="">Select Movie</option>
-				<?php 
-				foreach ($movies as $movie) {
-					if (strpos($movie['class'],'movie_now_showing') !== false) {
-						echo '<option value="' . $movie['alias'] . '">' . $movie['title'] . '</option>';
-					}
-				}
-				?>
-			</select>
-
-			<select name="date" class="default" tabindex="1">
-				<option value="d1">Today</option>
-				<option value="d2">Next Three Days</option>
-				<option value="d3">This Week</option>
-				<option value="d6">All</option>
-			</select>
-
-			<button class="button">Search Now</button>
-
-			<p><a href="movies.php?filter=movie_now_showing">Now Showing</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="movies.php?filter=movie_coming_soon">Coming Soon</a></p>
-			<div class="clr"></div>
-				</div>
-				<div id="ad1" class="mod last">
-					<a href="#"><img src="images/ad1.jpg" /></a>
-				</div>
-			</div>
-		</div>
+		<!-- SIDE BAR -->
+    	<?php include('sidebar.php');?>
 
         <div class="clr"></div>
     </div>
@@ -119,13 +87,15 @@ $movies = $db->callProcedure('selectMovies');
 				} else {
 					echo '<div class="movieCell ' . $movie['class'] . '">';
 				}					
-					echo '<img src="media/movies/' . $movie['alias'] , '/poster_portrait.jpg" />';
-					echo '<div class="hoverBox">';
+					echo '<a href="booking.php?movie_id=' . $movie['id'] . '"><img src="media/movies/' . $movie['alias'] , '/poster_portrait.jpg" /></a>';
+					
+					echo '<div class="hoverBox" onclick="location.href=\'movie.php?id=' . $movie['id'] . '\';">';
 						echo '<a href="movie.php?id=' . $movie['id'] . '" class="button">Preview</a>';
 						if (strpos($movie['class'],'movie_now_showing') !== false) {
-							echo '<a href="booking.php&movie_id=' . $movie['id'] . '" class="button">Book now</a>';
+							echo '<a href="booking.php?movie_id=' . $movie['id'] . '" class="button">Book now</a>';
 						}
 					echo '</div>';
+					
 					echo '<div class="movieName"><a href="movie.php?id=' . $movie['id'] . '">' . $movie['title'] . '</a></div>';
 				echo '</div>';
 			}

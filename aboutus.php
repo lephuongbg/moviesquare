@@ -1,12 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<?php
-include_once 'core/database.php';
-$db = new MS_Database();
-$movies_now_showing = $db->callProcedure('selectMoviesNowShowing');
-?>
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="description" content="Movie Square Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
@@ -43,8 +37,8 @@ $movies_now_showing = $db->callProcedure('selectMoviesNowShowing');
 		  </ul>
 		</div>
 	</div>
-	<div id="filmBar">
-	</div>
+	
+	<div id="filmBar"></div>
 	
 	<div id="main">
 		<div id="content">
@@ -58,38 +52,8 @@ $movies_now_showing = $db->callProcedure('selectMoviesNowShowing');
 			</div>
 		</div>
 		
-    	<div id="sidebar">
-			<div class="padding">
-			<div id="quickBooking" class="box mod">
-			<div class="ticketIcon"></div>
-			<h3>Get Ticket</h3>
-
-			<select name="movie" class="default" tabindex="1">
-				<option value="">Select Movie</option>
-				<?php 
-				foreach ($movies_now_showing as $movie) {
-					echo '<option value="' . $movie['alias'] . '">' . $movie['title'] . '</option>';
-				}
-				?>
-			</select>
-
-			<select name="date" class="default" tabindex="1">
-				<option value="d1">Today</option>
-				<option value="d2">Next Three Days</option>
-				<option value="d3">This Week</option>
-				<option value="d6">All</option>
-			</select>
-
-			<button class="button">Search Now</button>
-
-			<p><a href="movies.php?filter=movie_now_showing">Now Showing</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="movies.php?filter=movie_coming_soon">Coming Soon</a></p>
-			<div class="clr"></div>
-				</div>
-				<div id="ad1" class="mod last">
-					<a href="#"><img src="images/ad1.jpg" /></a>
-				</div>
-			</div>
-		</div>
+    	<!-- SIDE BAR -->
+    	<?php include('sidebar.php');?>
 		
         <div class="clr"></div>    	
     </div>
@@ -98,12 +62,12 @@ $movies_now_showing = $db->callProcedure('selectMoviesNowShowing');
 
     <div id="footer">
     	<ul>
-			<li class="current"><a href="index.php">Home </a></li>
+			<li><a href="index.php">Home </a></li>
 			<li><a href="booking.php">Ticket Booking</a></li>
 			<li><a href="movies.php">Movies</a></li>
 			<li><a href="news.php">News &amp; Events</a></li>
 			<li><a href="services.php">Services</a></li>
-			<li><a href="aboutus.php">About Us</a></li>
+			<li class="current"><a href="aboutus.php">About Us</a></li>
 		</ul>
 
 		<h3>Movie Square Entertainment Jsc &copy; Copyright 2012</h3>

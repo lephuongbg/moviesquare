@@ -2,14 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <?php
-include_once 'core/database.php';
-$db = new MS_Database();
-$movie_id = isset($_GET['id']) ? $_GET['id'] : 0;
-$movies_now_showing = $db->callProcedure('selectMoviesNowShowing');
-$movie = $db->callProcedure('selectMovieById', (int) $movie_id);
-if (empty($movie))
-	// 404 Redirect
-	header('Location: index.php');
+	$movie_id = isset($_GET['id']) ? $_GET['id'] : 0;
+	
+	include_once 'core/database.php';
+	$db = new MS_Database();
+	$movies_now_showing = $db->callProcedure('selectMovieById(' . $movie_id . ')');
+	/*if (empty($movies_now_showing)) {
+		// 404 Redirect
+		header('Location: index.php');
+	}*/
 ?>
 
 <head>
@@ -63,7 +64,7 @@ if (empty($movie))
 		<div id="content">
 			<div class="padding">
 				<div id="article">
-					<center><h1><a href="booking.php"><?php echo $movie['title'];?></h1></a></center>
+					<center><h1><a href="#"><?php echo $movie['title'];?></h1></a></center>
 					<!--<div class="itemInfo small">
 						<a href="news.php">News & Event</a>
 						<span>20:00 Thurday, 15/5/2012</span>
@@ -75,7 +76,7 @@ if (empty($movie))
 						<img src="media/movies/<?php echo $movie['alias'];?>/poster_portrait.jpg"/>
 						<center>
 						<?php if (strpos($movie['class'],'movie_now_showing') !== false) {
-							echo '<a href="booking.php" class="button">Book now</a>';
+							echo '<a href="booking.php?movie_id=' . $movie['id'] . '" class="button">Book now</a>';
 						} ?>						
 						&nbsp;
 						<a href="#movie_trailer" class="button">Watch Trailer</a>
@@ -127,38 +128,8 @@ if (empty($movie))
 			</div>
 		</div>
 
-    	<div id="sidebar">
-			<div class="padding">
-			<div id="quickBooking" class="box mod">
-			<div class="ticketIcon"></div>
-			<h3>Get Ticket</h3>
-
-			<select name="movie" class="default" tabindex="1">
-				<option value="">Select Movie</option>
-				<?php
-				foreach ($movies_now_showing as $m) {
-					echo '<option value="' . $m['alias'] . '">' . $m['title'] . '</option>';
-				}
-				?>
-			</select>
-
-			<select name="date" class="default" tabindex="1">
-				<option value="d1">Today</option>
-				<option value="d2">Next Three Days</option>
-				<option value="d3">This Week</option>
-				<option value="d6">All</option>
-			</select>
-
-			<button class="button">Search Now</button>
-
-			<p><a href="movies.php?filter=movie_now_showing">Now Showing</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="movies.php?filter=movie_coming_soon">Coming Soon</a></p>
-			<div class="clr"></div>
-				</div>
-				<div id="ad1" class="mod last">
-					<a href="#"><img src="images/ad1.jpg" /></a>
-				</div>
-			</div>
-		</div>
+    	<!-- SIDE BAR-->
+    	<?php include('sidebar.php');?>
 
 		<div class="clr"></div>
 	</div>
@@ -167,9 +138,9 @@ if (empty($movie))
 
     <div id="footer">
     	<ul>
-			<li class="current"><a href="index.php">Home </a></li>
+			<li><a href="index.php">Home </a></li>
 			<li><a href="booking.php">Ticket Booking</a></li>
-			<li><a href="movies.php">Movies</a></li>
+			<li class="current"><a href="movies.php">Movies</a></li>
 			<li><a href="news.php">News &amp; Events</a></li>
 			<li><a href="services.php">Services</a></li>
 			<li><a href="aboutus.php">About Us</a></li>
