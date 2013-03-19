@@ -13,13 +13,13 @@ require 'header.php';
 				<form action="" method="post">
 					
 					<div class="element">
-						<label for="room-id">ID</label>
+						<label for="room-id">ID (*)</label>
 						<input id="room-id" name="room[id]" type="text">
 					</div>
 					
 					<div class="element">
 						<label for="room-description">Description</label>
-						<input id="room-description" name="room[description]" type="text">
+						<textarea id="room-description" name="movie[description]" cols="60" rows="10" onkeyup="countChar(this)"></textarea>
 					</div>
 					
 					<div class="entry">
@@ -33,5 +33,15 @@ require 'header.php';
 	<div class="clear"></div>
 </div>
 
+<script type="text/javascript">
+	function countChar(val) {
+		var len = val.value.length;
+		if (len >= 250) {
+			val.value = val.value.substring(0, 250);
+		} else {
+			$(val).text(250 - len);
+		}
+	};
+</script>
 <?php
 require_once 'footer.php';
