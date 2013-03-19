@@ -52,7 +52,8 @@ class MS_Database
 			$rows = array_shift($rows);
 		
 		// Free the result set
-		$this->_mysql->next_result();
+		while ($this->_mysql->more_results())
+			$this->_mysql->next_result();
 		
 		return $rows;
 	}
