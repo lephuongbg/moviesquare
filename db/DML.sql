@@ -8,6 +8,9 @@ SELECT * FROM `orders`;
 -- Insert 2 rooms B1 and B2
 INSERT INTO `rooms`(`id`) VALUES ('B1');
 INSERT INTO `rooms`(`id`) VALUES ('B2');
+INSERT INTO `rooms`(`id`) VALUES ('B3');
+INSERT INTO `rooms`(`id`) VALUES ('B4');
+INSERT INTO `rooms`(`id`) VALUES ('B5');
 
 -- Insert data for movies
 INSERT INTO `movies`(`title`, `alias`, `class`, `short_description`, `description`)
@@ -102,6 +105,26 @@ INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('6','B2','2013-3-15 16:45:00');
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('10','B2','2013-3-15 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('11','B3','2013-3-15 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('5','B3','2013-3-15 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('12','B3','2013-3-15 20:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('10','B4','2013-3-15 11:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('1','B4','2013-3-15 16:45:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('6','B4','2013-3-15 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('7','B5','2013-3-15 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('10','B5','2013-3-15 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('7','B5','2013-3-15 20:00:00');
+
+
 -- 16/3
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('5','B1','2013-3-16 10:00:00');
@@ -115,6 +138,24 @@ INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('6','B2','2013-3-16 16:45:00');
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('10','B2','2013-3-16 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('12','B3','2013-3-16 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('11','B3','2013-3-16 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('5','B3','2013-3-16 20:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('6','B4','2013-3-16 11:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('10','B4','2013-3-16 16:45:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('1','B4','2013-3-16 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('7','B5','2013-3-16 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('12','B5','2013-3-16 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('11','B5','2013-3-16 20:00:00');
 
 -- 17/3
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
@@ -129,6 +170,24 @@ INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('6','B2','2013-3-17 16:45:00');
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('10','B2','2013-3-17 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('12','B3','2013-3-17 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('11','B3','2013-3-17 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('5','B3','2013-3-17 20:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('6','B4','2013-3-17 11:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('10','B4','2013-3-17 16:45:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('1','B4','2013-3-17 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('7','B5','2013-3-17 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('5','B5','2013-3-17 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('6','B5','2013-3-17 20:00:00');
 
 -- 18/3
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
@@ -143,6 +202,24 @@ INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('6','B2','2013-3-18 16:45:00');
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('10','B2','2013-3-18 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('12','B3','2013-3-18 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('11','B3','2013-3-18 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('7','B3','2013-3-18 20:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('6','B4','2013-3-18 11:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('10','B4','2013-3-18 16:45:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('1','B4','2013-3-18 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('5','B5','2013-3-18 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('10','B5','2013-3-18 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('1','B5','2013-3-18 20:00:00');
 
 -- 19/3
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
@@ -157,6 +234,24 @@ INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('6','B2','2013-3-19 16:45:00');
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('10','B2','2013-3-19 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('7','B3','2013-3-19 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('11','B3','2013-3-19 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('5','B3','2013-3-19 20:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('6','B4','2013-3-19 11:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('10','B4','2013-3-19 16:45:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('1','B4','2013-3-19 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('12','B5','2013-3-19 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('7','B5','2013-3-19 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('5','B5','2013-3-19 20:00:00');
 
 -- 20/3
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
@@ -171,6 +266,24 @@ INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('6','B2','2013-3-20 16:45:00');
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('10','B2','2013-3-20 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('12','B3','2013-3-20 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('7','B3','2013-3-20 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('5','B3','2013-3-20 20:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('6','B4','2013-3-20 11:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('10','B4','2013-3-20 16:45:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('1','B4','2013-3-20 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('11','B5','2013-3-20 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('12','B5','2013-3-20 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('11','B5','2013-3-20 20:00:00');
 
 -- 21/3
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
@@ -185,3 +298,21 @@ INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('7','B2','2013-3-21 16:45:00');
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('7','B2','2013-3-21 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('12','B3','2013-3-21 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('11','B3','2013-3-21 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('5','B3','2013-3-21 20:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('6','B4','2013-3-21 11:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('10','B4','2013-3-21 16:45:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('1','B4','2013-3-21 21:30:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('7','B5','2013-3-21 10:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('1','B5','2013-3-21 14:00:00');
+INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
+VALUES ('6','B5','2013-3-21 20:00:00');

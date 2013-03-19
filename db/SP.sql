@@ -30,7 +30,7 @@ WHERE m.`class` LIKE '%movie_now_showing%'
 ORDER BY s.`movie_id`, s.`room_id`, s.`show_time`;
 END //
 DELIMITER ;
-DROP PROCEDURE selectShow;
+-- DROP PROCEDURE selectShow;
 DELIMITER //
 CREATE PROCEDURE selectShow(IN movie_id INT, IN room_id VARCHAR(5), IN show_time DATETIME)
 BEGIN

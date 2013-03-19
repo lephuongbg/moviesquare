@@ -76,8 +76,13 @@
 			<div class="padding">
 				<h1>Movie Schedule</h1>
 				<?php
+				try{
 				$today = new DateTime('15-03-2013');
-				/*$current_movie = null;
+				}
+				catch(Exception $e)
+				{}
+
+								/*$current_movie = null;
 				$current_date = null;
 				
 				foreach ($schedules as $s) {
@@ -123,6 +128,7 @@
 						}
 					echo '</div>';
 				}
+			
 				?>
 
 				<!-- Hidden form -->
