@@ -6,7 +6,7 @@ require_once 'header.php';
 <?php
 	include_once '../core/database.php';
 	$db = new MS_Database();
-	$schedules = $db->callProcedure('selectSchedules;');
+	$schedules = $db->callProcedure('selectSchedules');
 ?>
 	
 <div id="content">
@@ -46,70 +46,6 @@ require_once 'header.php';
 						echo '</td>';
 					}
 					?>
-				
-					<tr>
-						<td class="align-center">Titanic</td>
-						<td class="align-center">3-A</td>
-						<td class="align-center">22-03-2012 12:00</td>
-						<td>
-							<a href="shows-edit.php" class="table-icon edit" title="Edit"></a>
-							<a href="#" class="table-icon archive" title="Archive"></a>
-							<a href="#" class="table-icon delete" title="Delete"></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="align-center">Titanic</td>
-						<td class="align-center">2-A</td>
-						<td class="align-center">22-03-2012 12:00</td>
-						<td>
-							<a href="#" class="table-icon edit" title="Edit"></a>
-							<a href="#" class="table-icon archive" title="Archive"></a>
-							<a href="#" class="table-icon delete" title="Delete"></a>
-						</td>
-					</tr>
-						
-					<tr>
-						<td class="align-center">The Avengers</td>
-						<td class="align-center">3-B</td>
-						<td class="align-center">23-03-2012 - 10:00</td>
-						<td>
-							<a href="#" class="table-icon edit" title="Edit"></a>
-							<a href="#" class="table-icon archive" title="Archive"></a>
-							<a href="#" class="table-icon delete" title="Delete"></a>
-						</td>
-					</tr>
-						
-					<tr>
-						<td class="align-center">This means war</td>
-						<td class="align-center">2-B</td>
-						<td class="align-center">25-03-2012 - 14:00</td>
-						<td>
-							<a href="#" class="table-icon edit" title="Edit"></a>
-							<a href="#" class="table-icon archive" title="Archive"></a>
-							<a href="#" class="table-icon delete" title="Delete"></a>
-						</td>
-					</tr>						
-					<tr>
-						<td class="align-center">Feel the wrath</td>
-						<td class="align-center">2-A</td>
-						<td class="align-center">22-03-2012 16:00</td>
-						<td>
-							<a href="#" class="table-icon edit" title="Edit"></a>
-							<a href="#" class="table-icon archive" title="Archive"></a>
-							<a href="#" class="table-icon delete" title="Delete"></a>
-						</td>
-					</tr>
-						
-					<tr>
-						<td class="align-center">John Carter</td>
-						<td class="align-center">2-B</td>
-						<td class="align-center">23-03-2012 18:00</td>
-						<td>
-							<a href="#" class="table-icon edit" title="Edit"></a>
-							<a href="#" class="table-icon archive" title="Archive"></a>
-							<a href="#" class="table-icon delete" title="Delete"></a>
-						</td>
-					</tr>
 				</tbody>
 			</table>
 			<div class="entry">

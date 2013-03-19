@@ -81,22 +81,18 @@
 
 		<div class="movieGrid">
 			<?php // Load all movies
-			foreach ($movies as $key => $movie ) {
-				if (($key + 1) % 5 == 0) {
-					echo '<div class="movieCell last ' . $movie['class'] . '">';
-				} else {
-					echo '<div class="movieCell ' . $movie['class'] . '">';
-				}					
-					echo '<a href="booking.php?movie_id=' . $movie['id'] . '"><img src="media/movies/' . $movie['alias'] , '/poster_portrait.jpg" /></a>';
-					
-					echo '<div class="hoverBox" onclick="location.href=\'movie.php?id=' . $movie['id'] . '\';">';
-						echo '<a href="movie.php?id=' . $movie['id'] . '" class="button">Preview</a>';
-						if (strpos($movie['class'],'movie_now_showing') !== false) {
-							echo '<a href="booking.php?movie_id=' . $movie['id'] . '" class="button">Book now</a>';
-						}
-					echo '</div>';
-					
-					echo '<div class="movieName"><a href="movie.php?id=' . $movie['id'] . '">' . $movie['title'] . '</a></div>';
+			foreach ($movies as $key => $movie ) {				
+				echo '<div class="movieCell ' . $movie['class'] . '">';								
+				echo '<a href="booking.php?movie_id=' . $movie['id'] . '"><img src="media/movies/' . $movie['alias'] , '/poster_portrait.jpg" /></a>';
+				
+				echo '<div class="hoverBox" onclick="location.href=\'movie.php?id=' . $movie['id'] . '\';">';
+					echo '<a href="movie.php?id=' . $movie['id'] . '" class="button">Preview</a>';
+					if (strpos($movie['class'],'movie_now_showing') !== false) {
+						echo '<a href="booking.php?movie_id=' . $movie['id'] . '" class="button">Book now</a>';
+					}
+				echo '</div>';
+				
+				echo '<div class="movieName"><a href="movie.php?id=' . $movie['id'] . '">' . $movie['title'] . '</a></div>';
 				echo '</div>';
 			}
 			?>
@@ -182,6 +178,9 @@ Phone: 123-123456 | Fax: 123-123456 | Email: contact@moviesquare.com</p>
 
 <script type="text/javascript">
 $(".movieCell").hide();
+$(".movieCell.movie_now_showing").filter(function(index) {
+			return (index + 1) % 5 == 0;
+		}).addClass("last");
 $(".movieCell.movie_now_showing").show();
 
 $(".movieTabs a").click(function() {

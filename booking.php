@@ -5,7 +5,7 @@
 	include_once 'core/database.php';
 	$db = new MS_Database();
 	$movies_now_showing = $db->callProcedure('selectMoviesNowShowing');
-	$schedules = $db->callProcedure('selectSchedules');
+	//$schedules = $db->callProcedure('selectSchedules');
 
 	$movie_id = isset($_GET['movie_id']) ? $_GET['movie_id'] : 0;
 	$date_filter = isset($_GET['filter']) ? $_GET['filter'] : '';
@@ -77,55 +77,32 @@
 				<h1>Movie Schedule</h1>
 				<?php
 				try{
-				$today = new DateTime('15-03-2013');
-				}
-				catch(Exception $e)
-				{}
-
-								/*$current_movie = null;
-				$current_date = null;
+					$today = new DateTime('15-03-2013');
+				} catch(Exception $e) {
 				
-				foreach ($schedules as $s) {
-					$show_time = DateTime::createFromFormat('Y-m-d H:i:s', $s['show_time']);
-					
-					if ($current_movie = null) {
-						
-					} elseif {$current_movie 1= $s['movie_id']} {
-						
-					}
-					
-
-					if ($s['movie_id'] == $movie['id']) {
-						$dayDiff = $show_time->diff($today)->d;
-
-						if ($last_date->diff($show_time)->d != 0) {
-							echo '<div class="showDate ' . ( ($dayDiff == 0) ?  'date_1 ' : ' ' ) . ( ($dayDiff >= 0 && $dayDiff <= 2) ?  'date_3 ' : ' ' ) . ( ($dayDiff >= 0 && $dayDiff <= 6) ?  'date_7 ' : ' ' ) .'" >' . $show_time->format('d/m/Y');
-							echo '<span class="showTime"><a onclick="process(\'' . $s['movie_id'] . '\', \'' . $s['room_id'] . '\', \'' . $s['show_time'] . '\')">' . $show_time->format('H:i') . '</a></span>';
-							echo '</div>';
-						} else {
-							echo '<span class="showTime"><a onclick="process(\'' . $s['movie_id'] . '\', \'' . $s['room_id'] . '\', \'' . $s['show_time'] . '\')">' . $show_time->format('H:i') . '</a></span>';
-						}									
-					}
-					
-					$last_date = $show_time->format('d-m-Y');
-				}*/
-				
-				foreach ($movies_now_showing as $movie) {						
+				}				
+				foreach ($movies_now_showing as $movie) {
+					$schedules = $db->callProcedure('selectShowsByMovieId', $movie['id']);
 					echo '<div id="movie_' . $movie['id'] . '" class="box mod movieBox">';
-						echo '<a href="movie.php?id=' . $movie['id'] . '"><h1>' . $movie['title'] . '</h1></a>';
+					echo '<a href="movie.php?id=' . $movie['id'] . '"><h1>' . $movie['title'] . '</h1></a>';;
+					
+					foreach ($schedules as $s) {
+						$show_date = DateTime::createFromFormat('Y-m-d', $s['show_date']);
+						$dayDiff = $show_date->diff($today)->d;
 						
-						foreach ($schedules as $s) {
-							$show_time = DateTime::createFromFormat('Y-m-d H:i:s', $s['show_time']);
-							
-
-							if ($s['movie_id'] == $movie['id']) {
-								$dayDiff = $show_time->diff($today)->d;
-								
-								echo '<div class="showDate ' . ( ($dayDiff == 0) ?  'date_today ' : ' ' ) . ( ($dayDiff >= 0 && $dayDiff <= 2) ?  'date_3days ' : ' ' ) . ( ($dayDiff >= 0 && $dayDiff <= 6) ?  'date_7days ' : ' ' ) .'" >' . $show_time->format('d/m/Y');
-								echo '<span class="showTime"><a onclick="process(\'' . $s['movie_id'] . '\', \'' . $s['room_id'] . '\', \'' . $s['show_time'] . '\')">' . $show_time->format('H:i') . '</a></span>';
-								echo '</div>';								
-							}
-						}
+						echo '<div class="showDate ' . ( ($dayDiff == 0) ?  'date_today ' : ' ' ) . ( ($dayDiff >= 0 && $dayDiff <= 2) ?  'date_3days ' : ' ' ) . ( ($dayDiff >= 0 && $dayDiff <= 6) ?  'date_7days ' : ' ' ) .'" >' . $show_date->format('d/m/Y');							
+						
+						if (($time_block = '10:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '11:30') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '14:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '16:45') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '20:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '21:30') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						//echo '<span class="showTime"><a onclick="process(\'' . $s['movie_id'] . '\', \'' . $s['room_id'] . '\', \'' . $s['show_time'] . '\')">' . $show_time->format('H:i') . '</a></span>';
+						//var_dump($s);
+						echo '</div>';
+						
+					}
 					echo '</div>';
 				}
 			

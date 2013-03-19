@@ -140,19 +140,20 @@ label{display: block; margin-bottom: 5px;display: inline-block; padding: 2px 4px
 .dateTabs a {display:block; float:left; font-family:"MyriadProBoldCondensed"; font-size:18px; line-height:10px; padding:15px 10px; text-transform:uppercase; color:#999}
 .dateTabs a.selected, .dateTabs a:hover {background:#fff; color:#000; text-shadow:0px 0px 2px rgba(0,0,0,0.3)}
 
-.showTime a {margin:0px -15px 3px 30px; width:70px; background-color:#600; border-radius:3px; text-align:center; font-size:18px; line-height:24px; font-family:"MyriadProBoldCondensed"; text-transform:uppercase; color:#fff; cursor:pointer; display: inline-block}
+.showDate {display:block; line-height:36px;}
+.showTime a {position:relative; left:30px; margin:0px 3px; width:70px; background-color:#600; border-radius:3px; text-align:center; font-size:18px; line-height:24px; font-family:"MyriadProBoldCondensed"; text-transform:uppercase; color:#fff; cursor:pointer; display: inline-block}
 .showTime a:hover {background-color:#333; color:#ccc;}
-.showDate {display:block; margin: 5px 5px}
 
 /* BOOKING STEP 2 */
-#seatMap {margin:auto; border-collapse:separate; border-spacing:3px 7px;}
-#seatMap td {width:30px; height:30px; border-radius:5px; background-color:#ccc; cursor:pointer;}
+#seatMap {margin:auto; border-collapse:separate; border-spacing:2px 4px;}
+#seatMap td {width:31px; height:31px; border-radius:5px; background-color:#ccc; cursor:pointer; color:#fff; text-align: center; font-size:14px; padding:0px;}
 #seatMap .invalid {width:15px; visibility:hidden;}
 #seatMap .vip {background-color:#f99;}
 #seatMap .selected {background-color:#009;}
 #seatMap .booked {background-color:#333;}
 #seatMap .vip.selected{background-color:#900;}
-#seatMap .nameTag {background-color:#fff; text-align:center; font-size:18px; cursor:default;}
+#seatMap .nameTag {background-color:#fff; color:#000; text-align:center; font-size:18px; cursor:default;}
+#seatMap td:not(.nameTag):hover{background-color:#555;}
 
 .yourSeats span {margin-right:5px; cursor:pointer; display:inline-block;}
 .yourSeats span.standard {color:#009;}

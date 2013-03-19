@@ -17,19 +17,9 @@
 		header('Location: booking.php');
 	}
 
-	$db = new mysqli('localhost', 'root', '', 'moviesquare');
-	// check connection
-	if (mysqli_connect_errno()) {
-		die('Counld not connect: '. mysqli_connect_error());
-	}
-
-	if ($result = $db->query('call selectShow(' . $movie_id . ', \'' . $room_id . '\', \'' . $show_time . '\');')) {
-		$show = $result->fetch_assoc();
-
-		$result->close();
-	} else {
-		die($db->error);
-	}
+	include_once 'core/database.php';
+	$db = new MS_Database();
+	$show = $db->callProcedure('selectShow', $movie_id, $room_id, $show_time);
 
 	$show_time = DateTime::createFromFormat('Y-m-d H:i:s', $show['show_time']);
 ?>

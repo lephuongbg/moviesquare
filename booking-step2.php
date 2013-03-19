@@ -10,19 +10,9 @@
 		header('Location: booking.php');
 	}
 
-	$db = new mysqli('localhost', 'root', '', 'moviesquare');
-	// check connection
-	if (mysqli_connect_errno()) {
-		die('Counld not connect: '. mysqli_connect_error());
-	}
-
-	if ($result = $db->query('call selectShow(' . $movie_id . ', \'' . $room_id . '\', \'' . $show_time . '\');')) {
-		$show = $result->fetch_assoc();
-
-		$result->close();
-	} else {
-		die($db->error);
-	}
+	include_once 'core/database.php';
+	$db = new MS_Database();
+	$show = $db->callProcedure('selectShow', $movie_id, $room_id, $show_time);
 
 	$show_time = DateTime::createFromFormat('Y-m-d H:i:s', $show['show_time']);
 ?>
@@ -234,7 +224,7 @@
 					<input type="hidden" name="movie_id" value="<?php echo $show['movie_id']; ?>"/>
 					<input type="hidden" name="room_id" value="<?php echo $show['room_id']; ?>"/>
 					<input type="hidden" name="show_time" value="<?php echo $show['show_time']; ?>"/>
-					<input type="hidden" name="seats" />
+					<input type="hidden" name="seats"/>
 				</form>
 			   </div>
 			</div>
@@ -302,8 +292,12 @@ function back() {
 
 // Reset form
 function reset() {
+	if (confirm("Are you sure?") == false)
+		return;
+
 	seats = [];
 	$("#seatMap td").removeClass("selected");
+	$("#seatMap td").html("");
 	updateSideBar();
 }
 
@@ -338,10 +332,12 @@ $("#seatMap td").click(function() {
 			if (o.hasClass("selected")) {
 				seats.splice(arrayObjectIndexOf(seats, s), 1);
 				o.removeClass("selected");
+				o.html("");
 			} else {
 				seats.push(s);
 				seats.sort(s.compare);
 				o.addClass("selected");
+				o.html(o.attr("rowId") + o.attr("colId"));
 			}
 		}
 		

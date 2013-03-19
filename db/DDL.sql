@@ -1,3 +1,4 @@
+DROP DATABASE `MovieSquare`;
 CREATE DATABASE `MovieSquare` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `MovieSquare`;
 
@@ -55,12 +56,12 @@ CREATE TABLE `Orders` (
 
 -- ALTER TABLE `show` ADD INDEX ( `FilmId` ); -- Khong nen add index o bang nay vi minh se insert rat nhieu data
 -- ALTER TABLE `show` ADD INDEX ( `RoomNo` ); -- chi can PK la du
-ALTER TABLE `Rooms` ADD FOREIGN KEY (`id`) REFERENCES `show` (`room_id`) ON DELETE CASCADE ON UPDATE CASCADE ;
+/*ALTER TABLE `Rooms` ADD FOREIGN KEY (`id`) REFERENCES `show` (`room_id`) ON DELETE CASCADE ON UPDATE CASCADE ;
 ALTER TABLE `Movies` ADD FOREIGN KEY (`id`) REFERENCES `show` (`movie_id`) ON DELETE CASCADE ON UPDATE CASCADE ;
 ALTER TABLE `Shows` 
 ADD FOREIGN KEY (`movie_id`, `room_id`, `time`) 
 REFERENCES `Orders`(`movie_id`, `room_id`, `time`) 
-ON DELETE CASCADE ON UPDATE CASCADE ;
+ON DELETE CASCADE ON UPDATE CASCADE ;*/
 -- Viec thuc su tao ra cac FOREIGN KEY cung nen can nhac vi tren thuc te co the bo cac cau lenh nay 
 -- de giam chi phi duy tri db. 
 -- Minh se tu them cac check rang buoc trong khi luu lai du lieu bang php.

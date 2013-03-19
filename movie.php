@@ -6,11 +6,7 @@
 	
 	include_once 'core/database.php';
 	$db = new MS_Database();
-	$movies_now_showing = $db->callProcedure('selectMovieById(' . $movie_id . ')');
-	/*if (empty($movies_now_showing)) {
-		// 404 Redirect
-		header('Location: index.php');
-	}*/
+	$movie = $db->callProcedure('selectMovieById', $movie_id);
 ?>
 
 <head>
