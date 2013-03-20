@@ -57,4 +57,10 @@ class MS_Database
 		
 		return $rows;
 	}
+	
+	public function insert($query){
+		if($this->_mysql->query($query)==false)
+			return false;
+		return true;
+	}
 }

@@ -31,7 +31,7 @@ ORDER BY s.`movie_id`, s.`room_id`, s.`show_time`;
 END //
 DELIMITER ;
 -- DROP PROCEDURE selectShow;
-DELIMITER //
+DELIMITER //admin_use
 CREATE PROCEDURE selectShow(IN movie_id INT, IN room_id VARCHAR(5), IN show_time DATETIME)
 BEGIN
 SELECT s.`movie_id`, m.`title` AS `movie_title`, m.`alias` AS `movie_alias`, s.`room_id`, s.`show_time` FROM `shows` AS s

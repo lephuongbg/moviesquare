@@ -1,4 +1,4 @@
-DROP DATABASE `MovieSquare`;
+-- DROP DATABASE `MovieSquare`;
 CREATE DATABASE `MovieSquare` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `MovieSquare`;
 
