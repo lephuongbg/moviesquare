@@ -108,6 +108,7 @@ class MS_Database
 			else
 				$vals .= '\''.$this->_mysql->real_escape_string($value).'\'';
 		}
+
 		if (isset($data['id']) && !empty($data['id'])) {
 			$query = 'REPLACE INTO `'.$table.'` ('.$cols.') VALUES ('.$vals.')';
 			$result = $this->_mysql->query($query);
@@ -127,9 +128,4 @@ class MS_Database
 		return $this->_mysql->error;
 	}
 	
-	public function insert($query){
-		if($this->_mysql->query($query)==false)
-			return false;
-		return true;
-	}
 }
