@@ -6,16 +6,15 @@ require 'header.php';
 <?php
 	include_once '../core/database.php';
 	$db = new MS_Database();
-	//$rooms = $db->callProcedure('selectRooms');
-	if($_REQUEST['room-id']!='')
+	if($_POST['room-id']!='')
 	{
-		$room_id = $_REQUEST['room-id'];
-		$description = $_REQUEST['movie-description'];
-		$insert_query = "INSERT INTO `rooms` (`id`,`description`) VALUES ('$room_id','$description');";
-		if($db->insert($insert_query)==false)
-			echo '<script>alert("This room ID has already been created");</script>';
-		else
-			echo '<script>window.location = "rooms.php"</script>';
+		$room_id = $_POST['room-id'];
+		$description = $_POST['movie-description'];
+		$table = 'rooms';
+		$array = array("`id`"=>$room_id,"`description`"=>$description);
+		$db->storeArray($array,$table);
+		echo '<script>window.location = "rooms.php"</script>';
+		//header("Location: javascript:window.location = \"rooms.php\"");
 	}
 ?>	
 
@@ -26,7 +25,7 @@ require 'header.php';
 		<div class="full_w">
 			<div class="h_title">New room</div>
 			<div class="entry">
-				<form action="rooms-new.php" method="post" onsubmit="check();">
+				<form action="rooms-new.php" method="post" onsubmit="return process(this);">
 					
 					<div class="element">
 						<label for="room-id">ID (*)</label>
@@ -60,7 +59,7 @@ require_once 'footer.php';?>
 			$(val).text(250 - len);
 		}
 	};
-	function check() {
+	function process(form) {
 		alert("ID must not be left empty");	
 		if(form["room-id"]=="") (
 			alert("ID must not be left empty");	

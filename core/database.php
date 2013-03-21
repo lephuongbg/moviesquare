@@ -94,7 +94,7 @@ class MS_Database
 		}
 		$query = 'REPLACE INTO `'.$table.'` ('.$cols.') VALUES ('.$vals.')';
 		$result = $this->_mysql->query($query);
-		var_dump($query);die;
+		//var_dump($query);die;
 		if ($result)
 			return $this->_mysql->insert_id;
 		else 
@@ -105,9 +105,4 @@ class MS_Database
 		return $this->_mysql->error();
 	}
 	
-	public function insert($query){
-		if($this->_mysql->query($query)==false)
-			return false;
-		return true;
-	}
 }
