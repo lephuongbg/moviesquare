@@ -82,9 +82,17 @@ class MS_Database
 		return $rows;
 	}
 	
-	public function storeArray($array, $table) {
-		$cols = implode(',', array_keys($array));
-		foreach (array_values($array) as $value)
+	/**
+	 * Store an array into a table
+	 * @param array  $data	- Associative array with keys corresponding to table fields
+	 * @param string $table	- Table name
+	 * @param string $pkey	- Name of the primary key for the table
+	 * @return int   $updated_id - The value of the primary key of new/updated record
+	 */
+	public function storeArray($data, $table, $pkey = 'id') {
+		$cols = implode(',', array_keys($data));
+		$updated_id = 0;
+		foreach (array_values($data) as $value)
 		{
 			isset($vals) ? $vals .= ',' : $vals = '';
 			if (is_numeric($value))
@@ -92,13 +100,19 @@ class MS_Database
 			else
 				$vals .= '\''.$this->_mysql->real_escape_string($value).'\'';
 		}
-		$query = 'REPLACE INTO `'.$table.'` ('.$cols.') VALUES ('.$vals.')';
-		$result = $this->_mysql->query($query);
-		var_dump($query);die;
-		if ($result)
-			return $this->_mysql->insert_id;
-		else 
-			return false;
+		if (isset($data['id']) && !empty($data['id'])) {
+			$query = 'REPLACE INTO `'.$table.'` ('.$cols.') VALUES ('.$vals.')';
+			$result = $this->_mysql->query($query);
+			if ($result)
+				$updated_id = $data['id'];
+		} else {
+			$query = 'INSERT INTO `'.$table.'` ('.$cols.') VALUES ('.$vals.')';
+			$result = $this->_mysql->query($query);
+			if ($result)
+				$updated_id = $this->_mysql->insert_id;
+		}
+		
+		return $updated_id;
 	}
 	
 	public function getError() {

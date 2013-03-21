@@ -56,7 +56,7 @@ require_once 'header.php';
 						}
 						
 						echo '<td>';
-							echo '<a href="#" class="table-icon edit" title="Edit"></a>';
+							echo '<a href="movies-edit.php?id='.$movie['id'].'" class="table-icon edit" title="Edit"></a>';
 							echo '<a href="#" class="table-icon archive" title="Archive"></a>';
 							echo '<a href="#" class="table-icon delete" title="Delete"></a>';
 						echo '</td>';
