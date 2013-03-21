@@ -61,6 +61,11 @@ class MS_Database
 		return $rows;
 	}
 	
+	/**
+	 * Query database
+	 * @param string $queryString - contain SQL query statement
+	 * @return mixed array/string/TRUE if queried successfully; FALSE if queried unsuccessfully
+	 */
 	public function query($queryString) {
 		$rows = array();
 		
@@ -68,14 +73,17 @@ class MS_Database
 		$result = $this->_mysql->query($queryString);
 		
 		if (is_object($result)) {
+			// return the record directly if there's only one,
 			if ($result->num_rows == 1) {
 				$rows = $result->fetch_assoc();
+			// else, put all records inside array
 			} else {
 				while($row = $result->fetch_assoc())
 					$rows[] = $row;
 			}
 			$result->free_result();
 		} else {
+			// this may be TRUE/FALSE
 			return $result;
 		}
 		
@@ -116,7 +124,7 @@ class MS_Database
 	}
 	
 	public function getError() {
-		return $this->_mysql->error();
+		return $this->_mysql->error;
 	}
 	
 	public function insert($query){

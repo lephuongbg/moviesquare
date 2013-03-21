@@ -1,39 +1,44 @@
 <?php
-$title = 'Edit movie';
-require_once 'header.php';
-if (isset($_POST['movie'])) {
-	$movie = $_POST['movie'];
-	// Preprocess
-	if (!$movie['id'])
-		unset($movie['id']);
-	if ($movie['featured'])
-		$movie['class'] .= ' movie_featured';
-	unset($movie['featured']);
-	
-	// Store
-	$updated_id = $db->storeArray($movie, 'Movies');
-	if (!$updated_id) {
-		$error = $db->getError();
-		var_dump($error);die;
-	}
-	// Redirect
-	header('Location: movies-edit.php?id='.$updated_id);
-}
-
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
-$movie = $db->query('SELECT * FROM `Movies` WHERE id = '.$id);
-if (empty($movie))
-	header('Location: movies.php');
+$title = ($id) ? 'Edit movie' : 'New movie';
+require_once 'header.php';
+
+if ($id) {
+	$movie = $db->query('SELECT * FROM `Movies` WHERE id = '.$id);
+	if (empty($movie)) {
+		header('Location: movies.php?error=1');
+		return;
+	}
+	// break the movie class
+	$movie['featured'] = (strpos($movie['class'],'featured') !== FALSE);
+	$movie['class'] = array_shift(explode(' ',$movie['class']));
+} else {
+	if (isset($_POST['movie']))
+		$movie = $_POST['movie'];
+	else
+		$movie = array(
+			'id' 	=> 0, 
+			'title' => '', 
+			'alias' => '',
+			'class' => '',
+			'featured' => '',
+			'short_description' => '',
+			'description' => ''
+		);
+}
 ?>
 
 <div id="content">
+	<?php if (isset($_POST['error'])) : ?>
+	<div class="n_error"><p><?php echo $_POST['error']; ?></p></div>
+	<?php endif; ?>
 	<?php require_once 'sidebar.php' ?>
 	<div id="main">
 		
 		<div class="full_w">
-			<div class="h_title">Edit movie</div>
+			<div class="h_title"><?php echo $title; ?></div>
 			<div class="entry">
-				<form action="" method="post">
+				<form action="process.php" method="post">
 					<div class="element">
 						<label for="movie-id">ID</label>
 						<input id="movie-id" type="text" value="<?php echo $movie['id']; ?>" disabled>
@@ -90,6 +95,7 @@ if (empty($movie))
 							class="mceEditor"><?php echo $movie['description']; ?></textarea>
 					</div>
 					
+					<input type="hidden" name="type" value="movie" />
 					<div class="entry">
 						<button type="submit" class="add">Save movie</button> 
 						<button class="cancel" onClick="location.href='movies.php'; return false;">Cancel</button>

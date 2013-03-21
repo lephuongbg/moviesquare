@@ -283,15 +283,15 @@ button:hover, .button:hover{
 /* MAIN NOTIFY */
 
 .n_warning{background: #FFF7CE;border: 1px solid #D9C65B; border-radius: 3px; margin: 20px 15px;padding: 1px;}
-.n_warning p{	background: #FDF0B1 url(../img/i_warning.png) no-repeat 4px center;	color: #756B30;	margin: 0; padding: 7px 25px;}
+.n_warning p{	background: #FDF0B1 url(../img/i_warning.png) no-repeat 4px center;	color: #756B30;	margin: 0 !important; padding: 7px 25px;}
 .n_warning a{	color: #756B30;	font-weight: bold;}
 
 .n_ok{background: #F6FFEC;border: 1px solid #89B755; border-radius: 3px; margin: 20px 15px;padding: 1px;}
-.n_ok p{background: #DFF6C5 url(../img/i_ok.png) no-repeat 4px center; color: #496528; margin: 0; padding: 7px 25px;}
+.n_ok p{background: #DFF6C5 url(../img/i_ok.png) no-repeat 4px center; color: #496528; margin: 0 !important; padding: 7px 25px;}
 .n_ok a{color: #006312; font-weight: bold;}
 
 .n_error{background: #FDE4E1;border: 1px solid #B16A6C; border-radius: 3px; margin: 20px 15px;padding: 1px;}
-.n_error p{background: #F4CAC6 url(../img/i_error.png) no-repeat 4px center; color: #630E18; margin: 0; padding: 7px 25px;}
+.n_error p{background: #F4CAC6 url(../img/i_error.png) no-repeat 4px center; color: #630E18; margin: 0 !important; padding: 7px 25px;}
 .n_error a{color: #822121; font-weight: bold;}
 
 /* MAIN TABLE */
