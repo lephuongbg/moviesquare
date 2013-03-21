@@ -41,19 +41,66 @@ class MS_Database
 		
 		$result = $this->_mysql->query("call ".$procedure."(".implode(',', $args).");");
 		$rows = array();
-		if ($result) {
-			while($row = $result->fetch_assoc())
-				$rows[] = $row;
-			$result->close();
-		}
 		
-		// Convert array of result into the result itself if there is only one result
-		if (count($rows) == 1)
-			$rows = array_shift($rows);
+		if (is_object($result)) {
+			if ($result->num_rows == 1) {
+				$rows = $result->fetch_assoc();
+			} else {
+				while($row = $result->fetch_assoc())
+					$rows[] = $row;
+			}
+			$result->free_result();
+		} else {
+			return $result;
+		}
 		
 		// Free the result set
 		$this->_mysql->next_result();
 		
 		return $rows;
+	}
+	
+	public function query($queryString) {
+		$rows = array();
+		
+		$queryString = $this->_mysql->real_escape_string($queryString);
+		$result = $this->_mysql->query($queryString);
+		
+		if (is_object($result)) {
+			if ($result->num_rows == 1) {
+				$rows = $result->fetch_assoc();
+			} else {
+				while($row = $result->fetch_assoc())
+					$rows[] = $row;
+			}
+			$result->free_result();
+		} else {
+			return $result;
+		}
+		
+		return $rows;
+	}
+	
+	public function storeArray($array, $table) {
+		$cols = implode(',', array_keys($array));
+		foreach (array_values($array) as $value)
+		{
+			isset($vals) ? $vals .= ',' : $vals = '';
+			if (is_numeric($value))
+				$vals .= $value;
+			else
+				$vals .= '\''.$this->_mysql->real_escape_string($value).'\'';
+		}
+		$query = 'REPLACE INTO `'.$table.'` ('.$cols.') VALUES ('.$vals.')';
+		$result = $this->_mysql->query($query);
+		var_dump($query);die;
+		if ($result)
+			return $this->_mysql->insert_id;
+		else 
+			return false;
+	}
+	
+	public function getError() {
+		return $this->_mysql->error();
 	}
 }

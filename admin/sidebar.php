@@ -6,7 +6,8 @@
 			<li class="b2"><a class="icon report" href="">Reports</a></li>
 			<li class="b1"><a class="icon movies" href="movies.php">Movies</a></li>
 			<li class="b2"><a class="icon schedule" href="shows.php">Shows</a></li>
-			<li class="b1"><a class="icon schedule" href="rooms.php">Rooms</a></li>
+			<li class="b1"><a class="icon room" href="rooms.php">Rooms</a></li>
+			<li class="b2"><a class="icon order" href="orders.php">Orders</a></li>
 			
 		</ul>
 	</div>
