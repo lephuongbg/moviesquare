@@ -55,7 +55,8 @@ class MS_Database
 		}
 		
 		// Free the result set
-		$this->_mysql->next_result();
+		while ($this->_mysql->more_results())
+			$this->_mysql->next_result();
 		
 		return $rows;
 	}
@@ -102,5 +103,11 @@ class MS_Database
 	
 	public function getError() {
 		return $this->_mysql->error();
+	}
+	
+	public function insert($query){
+		if($this->_mysql->query($query)==false)
+			return false;
+		return true;
 	}
 }

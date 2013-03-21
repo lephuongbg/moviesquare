@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <?php
-include_once 'core/database.php';
-$db = new MS_Database();
-$movies = $db->callProcedure('selectMovies');
-$movie_filter = isset($_GET['filter']) ? $_GET['filter'] : '';
+	include_once 'core/database.php';
+	$db = new MS_Database();
+	$movies = $db->callProcedure('selectMovies');
+
+	$movie_filter = isset($_GET['filter']) ? $_GET['filter'] : '';
 ?>
 
 <head>
@@ -66,7 +67,7 @@ $movie_filter = isset($_GET['filter']) ? $_GET['filter'] : '';
 					echo '<div class="movieCell ' . $movie['class'] . '">';
 				}					
 					echo '<img src="media/movies/' . $movie['alias'] , '/poster_portrait.jpg" />';
-					echo '<div class="hoverBox">';
+					echo '<div class="hoverBox" onclick="location.href=\'movie.php?id=' . $movie['id'] . '\';">';
 						echo '<a href="movie.php?id=' . $movie['id'] . '" class="button">Preview</a>';
 						if (strpos($movie['class'],'movie_now_showing') !== false) {
 							echo '<a href="booking.php?movie_id=' . $movie['id'] . '" class="button">Book now</a>';
@@ -85,9 +86,9 @@ $movie_filter = isset($_GET['filter']) ? $_GET['filter'] : '';
     
     <div id="footer">
     	<ul>
-			<li class="current"><a href="index.php">Home </a></li>
+			<li><a href="index.php">Home </a></li>
 			<li><a href="booking.php">Ticket Booking</a></li>
-			<li><a href="movies.php">Movies</a></li>
+			<li class="current"><a href="movies.php">Movies</a></li>
 			<li><a href="news.php">News &amp; Events</a></li>
 			<li><a href="services.php">Services</a></li>
 			<li><a href="aboutus.php">About Us</a></li>

@@ -130,7 +130,7 @@ button:hover, .button:hover{
 .box ul li .room{ background: url(../img/i_room.png) no-repeat center left;}
 .box ul li .order{ background: url(../img/i_order.png) no-repeat center left;}
 
-
+.box ul li i{ margin: 0px 8px 0px 2px;}
 
 /* CONTENT MAIN START */
 
@@ -233,8 +233,9 @@ button:hover, .button:hover{
 	font-weight: bold;
 	margin: 0 10px 5px 0;
 	padding: 0 0 0 3px;
-	width: 60px;
+	width: 100px;
 }
+
 #main form label span{
 	color: #b8b8b8;
 	font-size: 11px;
@@ -275,6 +276,10 @@ button:hover, .button:hover{
 #main form .small {
 	width: 30px;
 }
+
+#main form .wide {
+	width: 200px;
+}
 /* MAIN NOTIFY */
 
 .n_warning{background: #FFF7CE;border: 1px solid #D9C65B; border-radius: 3px; margin: 20px 15px;padding: 1px;}
@@ -306,6 +311,14 @@ table th{
 	padding: 7px; 
 	text-shadow: 0px 1px #242424; 
 }
+table th.small {
+	width: 20px;
+}
+
+table th.medium {
+	width: 80px;
+}
+
 table tr{ 
 	border-left: 1px solid #ffffff;
 	border-right: 1px solid #ffffff;

@@ -17,20 +17,30 @@ require 'header.php';
 						
 						<div class="clear"></div>
 						
-						<label for="movie-title">Title</label>
+						<label for="movie-title">Title (*)</label>
 						<input id="movie-title" name="movie[title]" type="text">
 						
 						<div class="clear"></div>
 						
-						<label for="movie-alias">Alias</label>
+						<label for="movie-alias">Alias (*)</label>
 						<input id="movie-alias" name="movie[alias]" type="text">
 					
 					</div>
 					
 					<div class="element">
+						<label for="movie-poster">Poster</label>
+						<input id="movie-poster" name="movie[poster]" type="file">
+						
+						<div class="clear"></div>
+						
+						<label for="movie-trailer">Trailer</label>
+						<input id="movie-trailer" name="movie[trailer]" type="file">
+					</div>
+					
+					<div class="element">
 						<label for="movie-genre">Genre</label>
 						<select id="movie-genre" name="movie[genre]">
-							<option value="">- Please select -</option>
+							<option value="">- Please select -&nbsp;&nbsp;</option>
 							<option value="action">Action</option>
 							<option value="adventure">Adventure</option>
 							<option value="animation">Animation</option>
@@ -49,27 +59,16 @@ require 'header.php';
 							<option value="sci-fi">Sci-Fi</option>
 							<option value="war">War</option>
 						</select>
-					</div>
+						
+						<div class="clear"></div>
 					
-					<div class="element">
-						<label for="movie-poster">Poster</label>
-						<input id="movie-poster" name="movie[poster]" type="file">
-					</div>
-					
-					<div class="element">
-						<label for="movie-trailer">Trailer</label>
-						<input id="movie-trailer" name="movie[trailer]" type="file">
-					</div>
-					
-					<div class="element">
 						<label for="movie-length-hours">Length</label>
 						<input id="movie-length-hours" name="movie[length][hours]" type="number" min="0" value="0" class="small">:<input id="movie-length-minutes" name="movie[length][minutes]" type="number" min="0" value="0" class="small">
-					</div>
 					
-					<div class="element">
+						<div class="clear"></div>
+						
 						<label for="movie-short-description">Short Description</label>
-						<textarea id="movie-short-description" name="movie[short-description]" cols="60" rows="10" onkeyup="countChar(this)">
-						</textarea>
+						<textarea id="movie-short-description" name="movie[short-description]" cols="60" rows="10" onkeyup="countChar(this)"></textarea>
 					</div>
 					
 					<div class="element">

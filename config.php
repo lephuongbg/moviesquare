@@ -9,7 +9,7 @@ define('DB_USER', 'root');
 
 
 /** Mật khẩu của tài khoản kết nối với cơ sở dữ liệu MySQL */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'herozero');
 
 
 /** Máy chủ cơ sở dữ liệu MySQL */

@@ -1,11 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<?php
-include_once 'core/database.php';
-$db = new MS_Database();
-$movies_now_showing = $db->callProcedure('selectMoviesNowShowing');
-$movie_id = isset($_GET['movie_id']) ? $_GET['movie_id'] : 0;
+<?php	
+	include_once 'core/database.php';
+	$db = new MS_Database();
+	$movies_now_showing = $db->callProcedure('selectMoviesNowShowing');
+	//$schedules = $db->callProcedure('selectSchedules');
+
+	$movie_id = isset($_GET['movie_id']) ? $_GET['movie_id'] : 0;
+	$date_filter = isset($_GET['filter']) ? $_GET['filter'] : '';
 ?>
 
 <head>
@@ -22,7 +25,6 @@ $movie_id = isset($_GET['movie_id']) ? $_GET['movie_id'] : 0;
 
 <!-- Custom CSS -->
 <link href="css/ms.css" rel="stylesheet" type="text/css" />
-<link href="css/booking.css" rel="stylesheet" type="text/css" />
 
 <!-- Javascript and JQuery -->
 <script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
@@ -60,39 +62,73 @@ $movie_id = isset($_GET['movie_id']) ? $_GET['movie_id'] : 0;
 	</div>
 
 	<div id="dateBox">
-		<div class="dateTabs">			
-			<a href="#" class="selected">Today</a>
-			<a href="#">Next three days</a>
-			<a href="#">This week</a>	
-			<a href="#">Display all</a>			
+		<div class="dateTabs">
+			<a <?php if ($date_filter == '') echo 'class="selected"';?>>Display all</a>
+			<a <?php if ($date_filter == 'date_today') echo 'class="selected"';?>>Today</a>
+			<a <?php if ($date_filter == 'date_3days') echo 'class="selected"';?>>Next three days</a>
+			<a <?php if ($date_filter == 'date_7days') echo 'class="selected"';?>>This week</a>			
 		</div>
 	</div>
-				
+
     <div id="main">
 
     	<div id="content">
 			<div class="padding">
 				<h1>Movie Schedule</h1>
-				<div id="query_result">
-				</div>
+				<?php
+				try{
+					$today = new DateTime('15-03-2013');
+				} catch(Exception $e) {
+				
+				}				
+				foreach ($movies_now_showing as $movie) {
+					$schedules = $db->callProcedure('selectShowsByMovieId', $movie['id']);
+					echo '<div id="movie_' . $movie['id'] . '" class="box mod movieBox">';
+					echo '<a href="movie.php?id=' . $movie['id'] . '"><h1>' . $movie['title'] . '</h1></a>';;
+					
+					foreach ($schedules as $s) {
+						$show_date = DateTime::createFromFormat('Y-m-d', $s['show_date']);
+						$dayDiff = $show_date->diff($today)->d;
+						
+						echo '<div class="showDate ' . ( ($dayDiff == 0) ?  'date_today ' : ' ' ) . ( ($dayDiff >= 0 && $dayDiff <= 2) ?  'date_3days ' : ' ' ) . ( ($dayDiff >= 0 && $dayDiff <= 6) ?  'date_7days ' : ' ' ) .'" >' . $show_date->format('d/m/Y');							
+						
+						if (($time_block = '10:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '11:30') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '14:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '16:45') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '20:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '21:30') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						//echo '<span class="showTime"><a onclick="process(\'' . $s['movie_id'] . '\', \'' . $s['room_id'] . '\', \'' . $s['show_time'] . '\')">' . $show_time->format('H:i') . '</a></span>';
+						//var_dump($s);
+						echo '</div>';
+						
+					}
+					echo '</div>';
+				}
+			
+				?>
+
+				<!-- Hidden form -->
+				<form id="movie_booking" action="booking-step2.php" method="post">
+					<input type="hidden" name="movie_id" />
+					<input type="hidden" name="room_id" />
+					<input type="hidden" name="show_time" />
+				</form>
 			</div>
+
+
 		</div>
 
     	<div id="sidebar">
 			<div class="padding">
 				<div class="box">
-					<form method="post" onsubmit="return false;">
-						<h3>Select movies</h3>
-						<?php 
-						foreach ($movies_now_showing as $movie) {
-							echo '<input type="checkbox" name="movie" value="' . $movie['alias'] . '" id="' . $movie['alias'] . '" ' . ($movie_id == $movie['id'] ? 'checked' : '') . '/>';
-							echo '<label for="' . $movie['alias'] . '">' . $movie['title'] . '</label><br />';
-						}
-						?>
-						
-						<!--<button class="button" id="submit_query">Search</button>-->
-					</form>
-
+					<h3>Select movies</h3>
+					<?php foreach ($movies_now_showing as $movie) {
+						echo '<label>';
+						echo '<input type="checkbox" class="movieCheckbox" name="movie" class="movieCheckbox" value="' . $movie['id'] . '" id="' . $movie['alias'] . '" ' . ($movie_id == $movie['id'] ? 'checked' : '') . '/>';
+						echo '&nbsp;&nbsp;&nbsp;&nbsp;' . $movie['title'] . '</label><br />';
+					}
+					?>
 					<div class="clr"></div>
 				</div>
 			</div>
@@ -105,8 +141,8 @@ $movie_id = isset($_GET['movie_id']) ? $_GET['movie_id'] : 0;
 
     <div id="footer">
     	<ul>
-			<li class="current"><a href="index.php">Home </a></li>
-			<li><a href="booking.php">Ticket Booking</a></li>
+			<li><a href="index.php">Home </a></li>
+			<li class="current"><a href="booking.php">Ticket Booking</a></li>
 			<li><a href="movies.php">Movies</a></li>
 			<li><a href="news.php">News &amp; Events</a></li>
 			<li><a href="services.php">Services</a></li>
@@ -124,61 +160,64 @@ Phone: 123-123456 | Fax: 123-123456 | Email: contact@moviesquare.com</p>
 </div>
 
 <script type="text/javascript">
-/*	today = new Date();
+$(".movieBox").hide();
+$(".movieCheckbox:checked").each(function() {
+	var movie_id = $(this).val();
+	$(".movieBox#movie_" + movie_id).show();
+});
 
-	$("input[name=movie]").each(function() {
-		$(this).removeAttr("checked");
-	});
+$(".movieCheckbox").change(function() {
+	var movie_id = $(this).val();
 
-	$("#submit_query").click(function() {
-		movies = $("input[name=movie]:checked");
-		if (movies.length == 0) {
-			alert("You haven't choose any movie!");
-			return;
-		}
+	if ($(this).attr("checked")) {
+		$(".movieBox#movie_" + movie_id).slideDown(300);
+	} else {
+		$(".movieBox#movie_" + movie_id).slideUp(300);
+	}
+});
 
-		// Update Schedule
-		schedule = $("#query_result");
-		schedule.empty();
-		movies.each(function() {
-			m = $(this);
-			schedule.append("<div class='box mod'><h1><a href='#'>" + getTitle(m) + "</a></h1>");
-			//c_query.each(function() {
-				//c = $(this);
-				//if (c.hasClass(m.val())) {
-					//$("#query_result .box").last().append("<div class='itemBox'><h4>" + $("label[for=" + m.attr("id") + "]").html() + "</h4><br >\n");
+var selectedClass = "<?php echo $date_filter;?>";
+if (selectedClass != "") {
+	$(".showDate").hide();
+	$(".showDate." + selectedClass).show();
+}
 
-					var i = 0, period = parseInt($(".selected").attr("id"));
-					var date = today.getDate(), month = today.getMonth(), year = today.getFullYear();
-					do {
-						date++;
-						if (date>31) {
-							date -= 31;
-							month++;
-							if (month>12)
-								year++;
-						}
-
-						$("#query_result .box").last().append("<span class='s_date'>" + date + "/" + month + "/" + year + "</span>\n" + generateTimeblock() + "<br>");
-					} while (++i<period && Math.floor(Math.random()*100)<80);
-				//}
-			//});
-		});
-		schedule.append("</div>");
-	});
-
-	function generateTimeblock() {
-		var html = "";
-		var timeblocks = new Array("10:00", "11:30", "14:00", "16:45", "20:00", "21:30");
-		for (i in timeblocks)
-			if (Math.floor(Math.random()*100)<75)
-				html += "<span class='s_timeblock'><a href='book-step-2.html'>" + timeblocks[i] + "</a></span>\n";
-		return html;
+$(".dateTabs a").click(function() {
+	var o = $(this);
+	selectedClass = "";
+	$(".dateTabs a").removeClass("selected");
+	o.addClass("selected");;
+	switch (o.html().toLowerCase()) {
+		case "today":
+			selectedClass = "date_today";
+			break;
+		case "next three days":
+			selectedClass = "date_3days";
+			break;
+		case "this week":
+			selectedClass = "date_7days";
+			break;
+		default:
+			selectedClass = "";
+			break;
 	}
 
-	function getTitle(o) {
-		return $("label[for=" + o.attr("id") + "]").html();
-	}*/
+	if (selectedClass != "") {
+		$(".showDate:not(." + selectedClass + ")").slideUp("fast", function() {
+			$(this).hide();
+		});		
+		$(".showDate." + selectedClass).slideDown("fast");		
+	} else {
+		$(".showDate").slideDown("fast");
+	}
+})
+
+function process(movieId, roomId, showTime) {
+	$("[name=movie_id]").val(movieId);
+	$("[name=room_id]").val(roomId);
+	$("[name=show_time]").val(showTime);
+	$("#movie_booking").submit();
+}
 </script>
 </body>
 </html>
