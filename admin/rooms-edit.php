@@ -4,9 +4,11 @@ $title = ($id) ? 'Edit room' : 'New room';
 require_once 'header.php';
 
 if ($id) {
-	$room = $db->query("SELECT * FROM `Rooms` WHERE `id` ='".$id."'");
+	$query = "SELECT * FROM `Rooms` WHERE id ='".$db->escape($id)."'";
+	$room = $db->query($query);
+
 	if (empty($room)) {
-		header('Location: room.php?error=1');
+		header('Location: rooms.php?error=1');
 		return;
 	}
 } else {
@@ -14,7 +16,7 @@ if ($id) {
 		$room = $_POST['room'];
 	else
 		$room = array(
-			'id' 	=> 0, 
+			'id' 	=> '', 
 			'description' => ''
 		);
 }
@@ -30,7 +32,7 @@ if ($id) {
 		<div class="full_w">
 			<div class="h_title"><?php echo $title; ?></div>
 			<div class="entry">
-				<form action="process.php?mode=edit&type=room" method="post">
+				<form action="process.php" method="post">
 					
 					<div class="element">
 						<label for="room-id">ID</label>
@@ -46,6 +48,7 @@ if ($id) {
 							class="mceEditor"><?php echo $room['description']; ?></textarea>
 					</div>
 					<input type="hidden" name="type" value="room" />
+					<input type="hidden" name="mode" value="edit" />
 					<div class="entry">
 						<button type="submit" class="add">Save room</button> 
 						<button class="cancel" onClick="location.href='rooms.php'; return false;">Cancel</button>
