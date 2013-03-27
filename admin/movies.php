@@ -57,8 +57,7 @@ require_once 'header.php';
 						
 						echo '<td>';
 							echo '<a href="movies-edit.php?id='.$movie['id'].'" class="table-icon edit" title="Edit"></a>';
-							echo '<a href="#" class="table-icon archive" title="Archive"></a>';
-							echo '<a href="#" class="table-icon delete" title="Delete"></a>';
+							echo '<a href="process.php?mode=delete&type=movie&id='.$movie['id'].'" class="table-icon delete" title="Delete"></a>';
 						echo '</td>';
 					}
 					?>
@@ -77,7 +76,7 @@ require_once 'header.php';
 					<a href="">Last »</a>
 				</div>
 				<div class="sep"></div>		
-				<a class="button add" href="movies-new.php">Add new movie</a>
+				<a class="button add" href="movies-edit.php">Add new movie</a>
 			</div>
 		</div>
 	</div>
