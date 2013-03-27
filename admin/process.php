@@ -30,6 +30,20 @@ if (!(isset($_REQUEST['mode']))) {
 				}
 				
 				break;
+			case 'room':
+				$room = $_POST['room'];
+				//Store
+				$updated_id = $db->storeArray($room, 'Rooms');
+				if (!$updated_id) {
+					$action = 'rooms-edit.php';
+					$inputs = $_POST['room'];
+					$input_error = $db->getError();
+				} else {
+					// Redirect
+					header('Location: rooms-edit.php?id='.$room['id']);
+					return;
+				}
+				break;
 			default:
 				$error = "Non-supported type of data for processing";
 				break;
@@ -39,6 +53,12 @@ if (!(isset($_REQUEST['mode']))) {
 			case 'movie':
 				$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 0;
 				$query = "DELETE FROM `Movies` WHERE id = ".(int) $id;
+				$db->query($query);
+				break;
+			case 'room':
+				$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 0;
+				$query = "DELETE FROM `Rooms` WHERE `id` = '".$id."'";
+				echo $query;
 				$db->query($query);
 				break;
 			default:

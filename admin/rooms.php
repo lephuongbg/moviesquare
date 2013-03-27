@@ -32,9 +32,9 @@ require_once 'header.php';
 						echo '<td>' . $room['description'] . '</td>';
 						
 						echo '<td>';
-							echo '<a href="#" class="table-icon edit" title="Edit"></a>';
+							echo '<a href="rooms-edit.php?id='.$room['id'].'" class="table-icon edit" title="Edit"></a>';
 							echo '<a href="#" class="table-icon archive" title="Archive"></a>';
-							echo '<a href="#" class="table-icon delete" title="Delete"></a>';
+							echo '<a href="process.php?mode=delete&type=room&id='.$room['id'].'" class="table-icon delete" title="Delete"></a>';
 						echo '</td>';
 					}
 					?>
@@ -54,7 +54,7 @@ require_once 'header.php';
 					<a href="">Last »</a>
 				</div>-->
 				<div class="sep"></div>		
-				<a class="button add" href="rooms-new.php">Add new room</a>
+				<a class="button add" href="rooms-edit.php">Add new room</a>
 			</div>
 		</div>
 	</div>
