@@ -40,7 +40,7 @@ if (!(isset($_REQUEST['mode']))) {
 					$input_error = $db->getError();
 				} else {
 					// Redirect
-					header('Location: rooms-edit.php?id='.$room['id']);
+					header('Location: rooms-edit.php?id='.$room['id'].'&message='.Messages::SUCCESS_SAVE_ROOM);
 					return;
 				}
 				break;
