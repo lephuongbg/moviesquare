@@ -5,7 +5,8 @@ $query = "SELECT * FROM `Rooms`";
 $rooms = $db->query($query, 'array');
 ?>
 <div id="content">
-	<?php require_once 'sidebar.php' ?>
+	<?php include_once 'messages.php'; ?>
+	<?php include_once 'sidebar.php'; ?>
 	<div id="main">
 		
 		<div class="full_w">

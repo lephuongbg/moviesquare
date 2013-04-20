@@ -20,12 +20,12 @@ if (!(isset($_REQUEST['mode']))) {
 				// Store
 				$updated_id = $db->storeArray($movie, 'Movies');
 				if (!$updated_id) {
-					$action = 'movies-edit.php';
+					$action = 'movies-edit.php?message='.Messages::ERROR_SAVE_MOVIE;
 					$inputs = $_POST['movie'];
 					$input_error = $db->getError();
 				} else {
 					// Redirect
-					header('Location: movies-edit.php?id='.$updated_id);
+					header('Location: movies-edit.php?id='.$updated_id.'&message='.Messages::SUCCESS_SAVE_MOVIE);
 					return;
 				}
 				
@@ -35,7 +35,7 @@ if (!(isset($_REQUEST['mode']))) {
 				//Store
 				$updated_id = $db->storeArray($room, 'Rooms');
 				if (!$updated_id) {
-					$action = 'rooms-edit.php';
+					$action = 'rooms-edit.php?message='.Messages::ERROR_SAVE_ROOM;
 					$inputs = $_POST['room'];
 					$input_error = $db->getError();
 				} else {
@@ -54,19 +54,19 @@ if (!(isset($_REQUEST['mode']))) {
 				$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 0;
 				$query = "DELETE FROM `Movies` WHERE id = ".(int) $id;
 				$db->query($query);
+				header('Location: movies.php?message='.Messages::SUCCESS_DELETE_MOVIE);
 				break;
 			case 'room':
 				$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 0;
 				$query = "DELETE FROM `Rooms` WHERE `id` = '".$id."'";
 				echo $query;
 				$db->query($query);
+				header('Location: rooms.php?message='.Messages::SUCCESS_DELETE_ROOM);
 				break;
 			default:
 				$error = "Non-supported type of data for processing";
 				break;
 		}
-		if (!empty($_SERVER['HTTP_REFERER']))
-			header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 }
 

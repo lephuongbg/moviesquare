@@ -29,10 +29,8 @@ if ($id) {
 ?>
 
 <div id="content">
-	<?php if (isset($_POST['error'])) : ?>
-	<div class="n_error"><p><?php echo $_POST['error']; ?></p></div>
-	<?php endif; ?>
-	<?php require_once 'sidebar.php' ?>
+	<?php include_once 'messages.php' ?>
+	<?php include_once 'sidebar.php' ?>
 	<div id="main">
 		
 		<div class="full_w">
