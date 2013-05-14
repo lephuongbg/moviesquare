@@ -49,7 +49,7 @@ if ($id) {
 					<input type="hidden" name="mode" value="edit" />
 					<div class="entry">
 						<button type="submit" class="add">Save room</button> 
-						<button class="cancel" onClick="location.href='rooms.php'; return false;">Cancel</button>
+						<button class="cancel" onClick="location.href='rooms.php'; return false;">Close</button>
 					</div>
 				</form>
 			</div>

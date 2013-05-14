@@ -2,8 +2,8 @@
 	<div class="box">
 		<div class="h_title">&#8250; Main Control</div>
 		<ul id="home">
-			<li class="b1"><a href=""><i class="icon-briefcase"></i>Control Panel</a></li>
-			<li class="b2"><a href=""><i class="icon-home"></i>Visit Site</a></li>
+			<li class="b1"><a href="index.php"><i class="icon-briefcase"></i>Control Panel</a></li>
+			<li class="b2"><a href="../index.php"><i class="icon-home"></i>Visit Site</a></li>
 			<li class="b1"><a href=""><i class="icon-signal"></i>Statistics</a></li>
 			<li class="b1"><a href="movies.php"><i class="icon-film"></i>Movies</a></li>
 			<li class="b2"><a href="rooms.php"><i class="icon-facetime-video"></i>Rooms</a></li>

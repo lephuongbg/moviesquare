@@ -44,6 +44,20 @@ if (!(isset($_REQUEST['mode']))) {
 					return;
 				}
 				break;
+            case 'show':
+                $show = $_POST['show'];
+                // Store
+                $updated_id = $db->storeArray($show, 'Shows');
+                if (!$updated_id) {
+                    $action = 'shows-edit.php?message='.Messages::ERROR_SAVE_SHOW;
+                    $inputs = $_POST['show'];
+                    $input_error = $db->getError();
+                } else {
+                    /// Redirect
+                    header('Location: shows-edit.php?id='.$show['id'].'&message='.Messages::SUCCESS_SAVE_SHOW);
+                    return;
+                }
+                break;
 			default:
 				$error = "Non-supported type of data for processing";
 				break;
@@ -63,6 +77,13 @@ if (!(isset($_REQUEST['mode']))) {
 				$db->query($query);
 				header('Location: rooms.php?message='.Messages::SUCCESS_DELETE_ROOM);
 				break;
+            case 'show':
+                $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 0;
+                $query = "DELETE FROM `Shows` WHERE `id` = '".$id."'";
+                echo $query;
+                $db->query($query);
+                header('Location: shows.php?message='.Messages::SUCCESS_DELETE_SHOW);
+                break;
 			default:
 				$error = "Non-supported type of data for processing";
 				break;
