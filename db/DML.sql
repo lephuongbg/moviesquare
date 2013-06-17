@@ -131,8 +131,6 @@ VALUES ('5','B1','2013-3-16 10:00:00');
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('12','B1','2013-3-16 14:00:00');
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
-VALUES ('11','B1','2013-3-16 14:00:00');
-INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('1','B2','2013-3-16 11:30:00');
 INSERT INTO `shows` (`movie_id`,`room_id`,`show_time`)
 VALUES ('6','B2','2013-3-16 16:45:00');

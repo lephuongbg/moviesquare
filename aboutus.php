@@ -45,9 +45,12 @@
 			<div class="padding">
 				<div id="about">
 					<h1>About us</h1>                   
-					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit   amet interdum augue. Maecenas eget odio non eros rhoncus euismod.   Suspendisse et fringilla ligula. Mauris arcu magna, sodales ut elementum   eu, tristique sed nisl. Nulla fermentum urna id dui rutrum hendrerit.   Nunc ipsum tortor, malesuada iaculis tincidunt sed, vestibulum eu ipsum.   Phasellus nisi sapien, pulvinar a porttitor ac, bibendum rutrum elit. </p>
-					<p> Nam justo augue, suscipit vitae hendrerit pulvinar, faucibus non nibh.   Donec dignissim laoreet magna vitae dictum. Vestibulum ante ipsum primis   in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse   pretium augue quis mauris tincidunt sollicitudin sit amet ut sem. Nullam   placerat, ante ut faucibus congue, nibh risus mattis purus, vitae   volutpat mauris sem ut tortor. Nullam elit felis, ullamcorper ut   convallis ac, varius nec turpis. Aliquam condimentum, sapien eget luctus   blandit, enim urna fringilla mi, sed pharetra diam sapien sed est.   Maecenas at tempus arcu. Pellentesque vel augue ut justo auctor   venenatis. Nunc metus lorem, pulvinar in tristique egestas, vehicula sed   ipsum. Donec a mi ac elit ullamcorper porttitor. Sed eu tristique dui.   Suspendisse sagittis feugiat sapien, vitae bibendum justo ullamcorper   ut. </p>
-					<p> Sed pharetra, est eleifend tincidunt euismod, elit dui bibendum lectus,   ac volutpat augue nibh at arcu. Vivamus eu lacus et ante ultrices   tincidunt. Vestibulum turpis leo, porta sed ultrices vitae, tincidunt ac   dolor. Pellentesque ut rhoncus dolor. Proin rutrum faucibus   scelerisque. Duis augue nulla, tempus vel mollis id, aliquet sed nisl.   Nulla ac sapien augue. Sed hendrerit volutpat nisi, sit amet hendrerit   purus scelerisque ut. </p>
+					<p>
+					    MovieSquare.com is the worldwide leader in advance movie ticketing and a top destination for news, celebrity interviews, movie reviews and trailers. MovieSquare.com offers moviegoers a quick and convenient way to purchase tickets online, via mobile device and at 877-789-MOVIE; along with enhanced services including print-at-home ticketing and much more. Fans can stay connected with MovieSquare.com through <a href="facebook.com">Facebook</a>, <a href="">Twitter</a> and <a href="">YouTube</a>.<br/>					</p>
+					<p>
+						Address: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua<br/>
+						Phone: 123-123456 | Fax: 123-123456 | Email: contact@moviesquare.com<br/>
+					</p>
 				</div>                    
 			</div>
 		</div>

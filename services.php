@@ -49,9 +49,12 @@
 			<div class="padding">
 				<div id="about">
 					<h1>Services</h1>                   
-					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit   amet interdum augue. Maecenas eget odio non eros rhoncus euismod.   Suspendisse et fringilla ligula. Mauris arcu magna, sodales ut elementum   eu, tristique sed nisl. Nulla fermentum urna id dui rutrum hendrerit.   Nunc ipsum tortor, malesuada iaculis tincidunt sed, vestibulum eu ipsum.   Phasellus nisi sapien, pulvinar a porttitor ac, bibendum rutrum elit. </p>
-					<p> Nam justo augue, suscipit vitae hendrerit pulvinar, faucibus non nibh.   Donec dignissim laoreet magna vitae dictum. Vestibulum ante ipsum primis   in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse   pretium augue quis mauris tincidunt sollicitudin sit amet ut sem. Nullam   placerat, ante ut faucibus congue, nibh risus mattis purus, vitae   volutpat mauris sem ut tortor. Nullam elit felis, ullamcorper ut   convallis ac, varius nec turpis. Aliquam condimentum, sapien eget luctus   blandit, enim urna fringilla mi, sed pharetra diam sapien sed est.   Maecenas at tempus arcu. Pellentesque vel augue ut justo auctor   venenatis. Nunc metus lorem, pulvinar in tristique egestas, vehicula sed   ipsum. Donec a mi ac elit ullamcorper porttitor. Sed eu tristique dui.   Suspendisse sagittis feugiat sapien, vitae bibendum justo ullamcorper   ut. </p>
-					<p> Sed pharetra, est eleifend tincidunt euismod, elit dui bibendum lectus,   ac volutpat augue nibh at arcu. Vivamus eu lacus et ante ultrices   tincidunt. Vestibulum turpis leo, porta sed ultrices vitae, tincidunt ac   dolor. Pellentesque ut rhoncus dolor. Proin rutrum faucibus   scelerisque. Duis augue nulla, tempus vel mollis id, aliquet sed nisl.   Nulla ac sapien augue. Sed hendrerit volutpat nisi, sit amet hendrerit   purus scelerisque ut. </p>
+					<p>
+						We want your online experience to be convenient, secure and easy. If you have questions, comments or concerns regarding ticket ordering, site navigation or other related issues, please fill out the form below. We would appreciate as much detail as possible to help expedite your query.
+						Before you contact us, we encourage you to browse our <a href="">Frequently Asked Questions</a>. This is the fastest and easiest way to get the answers to many of your questions.
+						Visit our <a href="aboutus.php">Contact Us</a> page for information related to other MovieTickets.com departments.
+						Fill out the form below and click 'Submit' to email Customer Service.
+					</p>
 				</div>                    
 			</div>
 		</div>

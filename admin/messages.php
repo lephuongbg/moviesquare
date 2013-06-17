@@ -55,6 +55,18 @@
 					if ($script_name == 'shows-edit.php')
 						$errors[] = "Error occured when saving show information";
 					break;
+				case Messages::SUCCESS_DELETE_ORDER:
+					if ($script_name == 'orders.php')
+						$successes[] = "Order successfully deleted";
+					break;
+				case Messages::SUCCESS_SAVE_ORDER:
+					if ($script_name == 'orders-edit.php')
+						$successes[] = "Order information successfully saved";
+					break;
+				case Messages::ERROR_SAVE_ORDER:
+					if ($script_name == 'orders-edit.php')
+						$errors[] = "Error occured when saving order information";
+					break;
 				default:
 					break;
 			}

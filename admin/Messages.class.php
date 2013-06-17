@@ -11,4 +11,7 @@ abstract class Messages
 	const ERROR_SAVE_ROOM		= 7;
 	const ERROR_SAVE_SHOW		= 8;
 	const ERROR_MOVIE_NOT_FOUND = 9;
+	const SUCCESS_DELETE_ORDER  = 10;
+	const SUCCESS_SAVE_ORDER 	= 11;
+	const ERROR_SAVE_ORDER 		= 12;
 }

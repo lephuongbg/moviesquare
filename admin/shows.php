@@ -37,7 +37,7 @@ require_once 'header.php';
                         <td class="align-center"><?php echo $show['show_time']; ?></td>
                         <td class="align-center">
                             <a href="shows-edit.php?id=<?php echo $show['id']; ?>" class="table-icon edit" title="Edit"></a>
-                            <a href="process.php?mode=delete&amp;type=show&amp;id=<?php echo $show['id']; ?>" class="table-icon delete" title="Delete"></a>'
+                            <a href="process.php?mode=delete&amp;type=show&amp;id=<?php echo $show['id']; ?>" class="table-icon delete" title="Delete"></a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

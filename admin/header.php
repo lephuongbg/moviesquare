@@ -33,7 +33,6 @@ $(function(){
 				<li class="upp"><a href="#">Main control</a>
 					<ul>
 						<li>&#8250; <a href="/">Visit site</a></li>
-						<li>&#8250; <a href="">Reports</a></li>
 						<li>&#8250; <a href="movies.php">Show all movies</a></li>
 						<li>&#8250; <a href="shows.php">Show all shows</a></li>
 						<li>&#8250; <a href="rooms.php">Show all rooms</a></li>

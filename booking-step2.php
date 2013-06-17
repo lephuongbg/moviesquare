@@ -141,10 +141,10 @@
 						<!-- H -->
 						<tr>
 							<td class="invalid"></td>
-							<td></td><td></td><td></td>
+							<td class="vip"></td><td class="vip"></td><td class="vip"></td>
 							<td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td>
 							<td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td>
-							<td></td><td></td><td></td>
+							<td class="vip"></td><td class="vip"></td><td class="vip"></td>
 							<td class="invalid"></td>
 							<td class="nameTag">H</td>
 						</tr>
@@ -152,29 +152,29 @@
 						<!-- I -->
 						<tr>
 							<td class="invalid"></td>
-							<td></td><td></td><td></td>
+							<td class="vip"></td><td class="vip"></td><td class="vip"></td>
 							<td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td>
 							<td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td>
-							<td></td><td></td><td></td>
+							<td class="vip"></td><td class="vip"></td><td class="vip"></td>
 							<td class="invalid"></td>
 							<td class="nameTag">I</td>
 						</tr>
 
 						<!-- J -->
 						<tr>
-							<td></td><td></td><td></td><td></td>
+							<td class="vip"></td><td class="vip"></td><td class="vip"></td></td><td class="vip"></td>
 							<td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td>
 							<td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td>
-							<td></td><td></td><td></td><td></td>
+							<td class="vip"></td><td class="vip"></td><td class="vip"></td></td><td class="vip"></td>
 							<td class="nameTag">J</td>
 						</tr>
 
 						<!-- K -->
 						<tr>
-							<td></td><td></td><td></td><td></td>
+							<td class="vip"></td><td class="vip"></td><td class="vip"></td></td><td class="vip"></td>
 							<td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td>
 							<td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td><td class="vip"></td>
-							<td></td><td></td><td></td><td></td>
+							<td class="vip"></td><td class="vip"></td><td class="vip"></td></td><td class="vip"></td>
 							<td class="nameTag">K</td>
 						</tr>
 
@@ -212,7 +212,7 @@
 							<td class="nameTag">6</td><td class="nameTag">7</td><td class="nameTag">8</td><td class="nameTag">9</td><td class="nameTag">10</td>
 							<td class="nameTag">11</td><td class="nameTag">12</td><td class="nameTag">13</td><td class="nameTag">14</td><td class="nameTag">15</td>
 							<td class="nameTag">16</td><td class="nameTag">17</td><td class="nameTag">18</td><td class="nameTag">19</td><td class="nameTag">20</td>
-						</tr>
+						</tr>						
 					</table>
 
 				<button onclick="back();" class="button">Back</button>
@@ -417,6 +417,17 @@ function arrayObjectIndexOf(array, searchObj) {
     }
     return -1;
 }
+
+
 </script>
+<?php 
+$seats = json_decode($show['booked']);
+if ($seats)
+foreach ($seats as $seat) {	
+	echo '<script type="text/javascript">
+		$("#seatMap td[rowId=\''.$seat[0].'\'][colId=\''.$seat[1].'\']").addClass("booked");
+	</script>';
+}
+?>
 </body>
 </html>

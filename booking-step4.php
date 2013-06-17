@@ -2,26 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <?php
-	$movie_id = $_POST['movie_id'];
-	$room_id = $_POST['room_id'];
-	$show_time = $_POST['show_time'];
-	$seats = json_decode($_POST['seats'], true);
+	include_once 'core/database.php';
+	$db = new MS_Database();
+	$order_id = $_POST['order_id'];
 	
-	$yourname = $_POST['yourname'];
-	$email = $_POST['email'];
-	$phone = $_POST['phone'];
-	$payment = $_POST['payment'];
-	
-	if (!$movie_id || !$room_id || !$show_time) {
+	if (!$order_id) {
 		// 404 Redirect
 		header('Location: booking.php');
 	}
 
-	include_once 'core/database.php';
-	$db = new MS_Database();
-	$show = $db->callProcedure('selectShow', $movie_id, $room_id, $show_time);
-
-	$show_time = DateTime::createFromFormat('Y-m-d H:i:s', $show['show_time']);
+	$query = "SELECT o.*, s.`movie_id`, s.`room_id`, s.`show_time`, m.`title` AS `movie_title`, m.`alias` AS `movie_alias` FROM Orders AS o"
+			. " JOIN Shows AS s ON o.`show_id` = s.`id`"
+			. " JOIN Movies AS m ON s.`movie_id` = m.`id`"
+			. "WHERE o.`id` = " . $order_id;
+	$order = $db->query($query);
+	
+	$movie_id = $order['movie_id'];
+	$room_id = $order['room_id'];
+	$show_time = DateTime::createFromFormat('Y-m-d H:i:s', $order['show_time']);
+	$seats = json_decode($order['seats'], true);	
+	$yourname = $order['customer'];
+	$email = $order['email'];
+	$phone = $order['tel'];
+	$payment = $order['payment'];
 ?>
 
 <head>
@@ -82,8 +85,8 @@
 			<h1>Thank you for using our services</h1>
 			<table class="ticketInfo">
 				<tr>
-					<td width="120">Movie</td><td width="200"><b><?php echo $show['movie_title']; ?></b></td>
-					<td rowspan="5" width="150" align="right" valign="top" class="ticketCode">NH3JW2K</td>
+					<td width="120">Movie</td><td width="200"><b><?php echo $order['movie_title']; ?></b></td>
+					<td rowspan="5" width="150" align="right" valign="top" class="ticketCode"><!--NH3JW2K--></td>
 				</tr>
 				<tr>
 					<td>Date</td><td><b><?php echo $show_time->format('d/m/Y'); ?></b></td>
@@ -95,22 +98,14 @@
 					<td>Seat Numbers</td>
 					<td><b>
 					<?php 
-					$price = 0;
-					
 					foreach ($seats as $seat) {
 						echo $seat['rowId'] . '' . $seat['colId'] . ', ';
-						
-						if ($seat['type'] == "vip") {							
-							$price += 100;
-						} else {
-							$price += 30;
-						}
 					} ?>
 					</b></td>
 				</tr>
 				<tr>
 					<td>Total Price</td>
-					<td><b>$<?php echo $price*11/10;?></b> 
+					<td><b>$<?php echo $order['price'];?></b> 
 					<?php					
 					switch($payment) {
 						case 'visa':
@@ -136,7 +131,7 @@
 					<td width="120">Your Name</td>
 					<td width="370"><?php echo $yourname; ?></td>
 				</tr>
-				<tr>
+				<tr>					
 					<td>Email</td>
 					<td><?php echo $email; ?></td>
 				</tr>
@@ -144,9 +139,30 @@
 					<td>Phone Number</td>
 					<td><?php echo $phone; ?></td>
 				</tr>
+				<?php if($order['payment'] == "visa") { ?>
+				<tr>
+					<td>Card Number</td>
+					<td><?php echo $order['card_no']; ?></td>
+				</tr>
+				<tr>
+					<td>Card Name</td>
+					<td><?php echo $order['card_name']; ?></td>
+				</tr>
+				<tr>
+					<td>Card CVV</td>
+					<td><?php echo $order['card_cvv']; ?></td>
+				</tr>
+				<tr>
+					<td>Expired Date</td>
+					<td><?php echo DateTime::createFromFormat('Y-m-d', $order['card_expired_date'])->format('d/m/Y'); ?></td>
+				</tr>
+				<?php } ?>
 			</table>
 			
-			<button onclick="alert('Email sent!');location.href='index.php';" class="button">Confirm and Send Me Email</button>
+			<p>A copy has been sent to your email, please check carefully that order details are all correct. If there is any question, you can reach out for us <a href="aboutus.php">here</a></p>
+			
+			<button onclick="location.href='index.php';" class="button">Confirm</button>
+			<button onclick="prompt('Email Address', '');" class="button">Send me another email</button>
 			</div>
 		</div>
 	</div>

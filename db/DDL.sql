@@ -27,18 +27,18 @@ CREATE TABLE `Rooms` (
 ) ENGINE = INNODB ;
 
 CREATE TABLE `Shows` (
+	`id` INT AUTO_INCREMENT PRIMARY KEY,
 	`movie_id` INT NOT NULL ,
 	`room_id` VARCHAR(5) NOT NULL ,
 	`show_time` DATETIME NOT NULL ,
 	`booked` TEXT DEFAULT '',  -- Thong tin nay se duoc luu duoi dang G6|G7|G8 de co the phan tich xem ghe nao da dat hay ghe nao chua
-	PRIMARY KEY (`movie_id`, `room_id`, `show_time`) -- Minh se khong luu show_id ma dung compact id
+	UNIQUE (`room_id`, `show_time`)
 ) ENGINE = INNODB  ;
 
 CREATE TABLE `Orders` (
-	`order_code` INT PRIMARY KEY ,
-	`movie_id` INT NOT NULL , -- Dung compact id se do ton 1 lan noi lai de truy xuat thong tin
-	`room_id` VARCHAR(5) NOT NULL ,
-	`show_time` DATETIME NOT NULL ,
+	`id` INT AUTO_INCREMENT PRIMARY KEY,
+	`status` VARCHAR(10) CHECK (`status` = 'pending' OR `status` = 'confirmed' OR `status` = 'canceled' OR `status` = 'done'),
+	`show_id` INT NOT NULL ,
 	`seats` TEXT NOT NULL , -- Thong tin nay se duoc luu duoi dang json
 	`price` DECIMAL(10, 2) DEFAULT 0 NOT NULL , -- Thong tin nay co the tinh duoc nhung can luu lai de khong phai quay lai bang
 												-- rooms de tinh lai gia tien theo ghe vip/ ghe thuong. Viec tinh toan se duoc

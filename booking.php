@@ -92,16 +92,14 @@
 						
 						echo '<div class="showDate ' . ( ($dayDiff == 0) ?  'date_today ' : ' ' ) . ( ($dayDiff >= 0 && $dayDiff <= 2) ?  'date_3days ' : ' ' ) . ( ($dayDiff >= 0 && $dayDiff <= 6) ?  'date_7days ' : ' ' ) .'" >' . $show_date->format('d/m/Y');							
 						
-						if (($time_block = '10:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
-						if (($time_block = '11:30') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
-						if (($time_block = '14:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
-						if (($time_block = '16:45') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
-						if (($time_block = '20:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
-						if (($time_block = '21:30') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
-						//echo '<span class="showTime"><a onclick="process(\'' . $s['movie_id'] . '\', \'' . $s['room_id'] . '\', \'' . $s['show_time'] . '\')">' . $show_time->format('H:i') . '</a></span>';
-						//var_dump($s);
-						echo '</div>';
+						if (($time_block = '10:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s[$time_block] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '11:30') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s[$time_block] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '14:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s[$time_block] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '16:45') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s[$time_block] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '20:00') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s[$time_block] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
+						if (($time_block = '21:30') && $s[$time_block]) echo '<span class="showTime"><a onclick="process(\'' . $s['id'] . '\', \'' . $s[$time_block] . '\', \'' . $s['show_date'] . ' ' . $time_block . ':00' . '\')">' . $time_block . '</a></span>';
 						
+						echo '</div>';						
 					}
 					echo '</div>';
 				}

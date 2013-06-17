@@ -74,7 +74,7 @@
 		<div id="content">
 			<div class="padding">
 				<div class="box">
-					<form id="movie_booking" action="booking-step4.php" method="post">
+					<form id="movie_booking" action="booking-process.php" method="post">
 						<h1>Information</h1>
 						<table class="formTable">
 							<tr>
@@ -105,19 +105,19 @@
 						<table class="formTable">
 							<tr>
 								<td class="formLabel"><label for="cardnumber">Card Number</label></td>
-								<td class="formBody"><img src="images/creditcard.jpg" align="right"/><input id="cardnumber" type="text" class="inputbox" /></td>
+								<td class="formBody"><img src="images/creditcard.jpg" align="right"/><input id="cardnumber" name="cardnumber" type="text" class="inputbox" /></td>
 							</tr>
 							<tr>
 								<td class="formLabel"><label for="cardname">Name</label></td>
-								<td class="formBody"><input id="cardname" type="text" class="inputbox" /></td>
+								<td class="formBody"><input id="cardname" name="cardname" type="text" class="inputbox" /></td>
 							</tr>
 							<tr>
 								<td class="formLabel"><label for="cardcvv">CCV Number</label></td>
-								<td class="formBody"><input id="cardcvv" type="text" class="inputbox short" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.cvvnumber.com/cvv.html" target="_blank">What is my CVV code?</a></td>
+								<td class="formBody"><input id="cardcvv" name="cardcvv" type="text" class="inputbox short" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.cvvnumber.com/cvv.html" target="_blank">What is my CVV code?</a></td>
 							</tr>
 							<tr>
 								<td class="formLabel"><label for="carddate">Expired Date</label></td>
-								<td class="formBody"><input id="carddate" type="text" class="inputbox short" placeholder="dd/mm/yyyy"/></td>
+								<td class="formBody"><input id="carddate" name="carddate" type="text" class="inputbox short" placeholder="dd/mm/yyyy"/></td>
 							</tr>
 			            </table>
 						</div>
@@ -128,7 +128,7 @@
 						<input type="hidden" name="seats" value='<?php echo $_POST['seats']; ?>'/>
 					</form>
 				  
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+					<p>Orders will be processed only after a billing address, and other billing information, has been verified. Occasionally, we receive incorrect billing or credit card account information for a ticket order that can delay processing and delivery. In these cases, Ticketplease customer service will attempt to contact you, using the information provided at the time of purchase. If Ticketplease is unable to reach you after its initial attempt, Ticketplease may cancel your order and may sell your tickets to another customer.</p>
 					<button onclick="back();" class="button">Back</button>
 					<button onclick="process();" class="button">I agree & confirm this step</button>						
 				</div>
@@ -293,7 +293,7 @@ function process() {
 		}
 	}
 	
-	$("#movie_booking").attr("action", "booking-step4.php");
+	//$("#movie_booking").attr("action", "booking-process.php");
 	$("#movie_booking").submit();
 	return true;
 }

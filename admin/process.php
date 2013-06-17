@@ -58,6 +58,32 @@ if (!(isset($_REQUEST['mode']))) {
                     return;
                 }
                 break;
+			 case 'order':
+                $order = $_POST['order'];
+                // Store
+                $updated_id = $db->storeArray($order, 'Orders');
+				if ($order['status'] == 'done') {
+					$query = "SELECT * FROM Shows WHERE id =  " . $order['show_id'];
+					$show = $db->query($query);
+					
+					$seat_labels = array();
+					foreach (json_decode($order['seats'], true) as $seat) {
+						$seat_labels[] = $seat['rowId'] . $seat['colId'];
+					}
+					$show['booked'] = json_encode(array_unique(array_merge($show['booked'] ? json_decode($show['booked'], true) : array(), $seat_labels), SORT_STRING));
+					$db->storeArray($show, 'Shows');
+				}
+				
+                if (!$updated_id) {
+                    $action = 'order-edit.php?message='.Messages::ERROR_SAVE_ORDER;
+                    $inputs = $_POST['order'];
+                    $input_error = $db->getError();
+                } else {
+                    /// Redirect
+                    header('Location: orders-edit.php?id='.$updated_id.'&message='.Messages::SUCCESS_SAVE_ORDER);
+                    return;
+                }
+                break;
 			default:
 				$error = "Non-supported type of data for processing";
 				break;
@@ -83,6 +109,13 @@ if (!(isset($_REQUEST['mode']))) {
                 echo $query;
                 $db->query($query);
                 header('Location: shows.php?message='.Messages::SUCCESS_DELETE_SHOW);
+                break;
+			case 'order':
+                $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 0;
+                $query = "DELETE FROM `Orders` WHERE `id` = '".$id."'";
+                echo $query;
+                $db->query($query);
+                header('Location: orders.php?message='.Messages::SUCCESS_DELETE_ORDER);
                 break;
 			default:
 				$error = "Non-supported type of data for processing";
